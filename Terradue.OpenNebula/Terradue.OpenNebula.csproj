@@ -7,6 +7,8 @@
     <OutputType>Library</OutputType>
     <RootNamespace>Terradue.OpenNebula</RootNamespace>
     <AssemblyName>Terradue.OpenNebula</AssemblyName>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -28,9 +30,25 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Terradue\OpenNebula\acct.cs" />
+    <Compile Include="Terradue\OpenNebula\cluster_pool.cs" />
+    <Compile Include="Terradue\OpenNebula\datastore_pool.cs" />
+    <Compile Include="Terradue\OpenNebula\group_pool.cs" />
+    <Compile Include="Terradue\OpenNebula\host_pool.cs" />
+    <Compile Include="Terradue\OpenNebula\image_pool.cs" />
+    <Compile Include="Terradue\OpenNebula\user_pool.cs" />
+    <Compile Include="Terradue\OpenNebula\vm_pool.cs" />
+    <Compile Include="Terradue\OpenNebula\vmtemplate_pool.cs" />
+    <Compile Include="Terradue\OpenNebula\vnet_pool.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Terradue\" />
+    <Folder Include="Terradue\OpenNebula\" />
+    <Folder Include="xsd\" />
+  </ItemGroup>
 </Project>

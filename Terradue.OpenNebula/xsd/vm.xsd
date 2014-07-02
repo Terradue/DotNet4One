@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+  targetNamespace="http://opennebula.org/XMLSchema" xmlns="http://opennebula.org/XMLSchema">
+  <xs:element name="VM">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="ID" type="xs:integer"/>
+        <xs:element name="UID" type="xs:integer"/>
+        <xs:element name="GID" type="xs:integer"/>
+        <xs:element name="UNAME" type="xs:string"/>
+        <xs:element name="GNAME" type="xs:string"/>
+        <xs:element name="NAME" type="xs:string"/>
+        <xs:element name="PERMISSIONS" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="OWNER_U" type="xs:integer"/>
+              <xs:element name="OWNER_M" type="xs:integer"/>
+              <xs:element name="OWNER_A" type="xs:integer"/>
+              <xs:element name="GROUP_U" type="xs:integer"/>
+              <xs:element name="GROUP_M" type="xs:integer"/>
+              <xs:element name="GROUP_A" type="xs:integer"/>
+              <xs:element name="OTHER_U" type="xs:integer"/>
+              <xs:element name="OTHER_M" type="xs:integer"/>
+              <xs:element name="OTHER_A" type="xs:integer"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="LAST_POLL" type="xs:integer"/>
+
+        <!-- STATE values,
+        see http://opennebula.org/_media/documentation:rel3.6:states-complete.png
+
+          INIT      = 0
+          PENDING   = 1
+          HOLD      = 2
+          ACTIVE    = 3 In this state, the Life Cycle Manager state is relevant
+          STOPPED   = 4
+          SUSPENDED = 5
+          DONE      = 6
+          FAILED    = 7
+          POWEROFF  = 8
+          UNDEPLOYED = 9
+        -->
+        <xs:element name="STATE" type="xs:integer"/>
+
+        <!-- LCM_STATE values, this sub-state is relevant only when STATE is
+             ACTIVE (4)
+
+          LCM_INIT            = 0,
+          PROLOG              = 1,
+          BOOT                = 2,
+          RUNNING             = 3,
+          MIGRATE             = 4,
+          SAVE_STOP           = 5,
+          SAVE_SUSPEND        = 6,
+          SAVE_MIGRATE        = 7,
+          PROLOG_MIGRATE      = 8,
+          PROLOG_RESUME       = 9,
+          EPILOG_STOP         = 10,
+          EPILOG              = 11,
+          SHUTDOWN            = 12,
+          CANCEL              = 13,
+          FAILURE             = 14,
+          CLEANUP_RESUBMIT    = 15,
+          UNKNOWN             = 16,
+          HOTPLUG             = 17,
+          SHUTDOWN_POWEROFF   = 18,
+          BOOT_UNKNOWN        = 19,
+          BOOT_POWEROFF       = 20,
+          BOOT_SUSPENDED      = 21,
+          BOOT_STOPPED        = 22,
+          CLEANUP_DELETE      = 23,
+          HOTPLUG_SNAPSHOT    = 24,
+          HOTPLUG_NIC         = 25,
+          HOTPLUG_SAVEAS           = 26,
+          HOTPLUG_SAVEAS_POWEROFF  = 27,
+          HOTPLUG_SAVEAS_SUSPENDED = 28,
+          SHUTDOWN_UNDEPLOY   = 29,
+          EPILOG_UNDEPLOY     = 30,
+          PROLOG_UNDEPLOY     = 31,
+          BOOT_UNDEPLOY       = 32
+        -->
+        <xs:element name="LCM_STATE" type="xs:integer"/>
+        <xs:element name="RESCHED" type="xs:integer"/>
+        <xs:element name="STIME" type="xs:integer"/>
+        <xs:element name="ETIME" type="xs:integer"/>
+        <xs:element name="DEPLOY_ID" type="xs:string"/>
+
+        <!-- MEMORY consumption in kilobytes -->
+        <xs:element name="MEMORY" type="xs:integer"/>
+
+        <!-- Percentage of 1 CPU consumed (two fully consumed cpu is 200) -->
+        <xs:element name="CPU" type="xs:integer"/>
+
+        <!-- NET_TX: Sent bytes to the network -->
+        <xs:element name="NET_TX" type="xs:integer"/>
+
+        <!-- NET_RX: Received bytes from the network -->
+        <xs:element name="NET_RX" type="xs:integer"/>
+        <xs:element name="TEMPLATE" type="xs:anyType"/>
+        <xs:element name="USER_TEMPLATE" type="xs:anyType"/>
+        <xs:element name="HISTORY_RECORDS">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="HISTORY" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="OID" type="xs:integer"/>
+                    <xs:element name="SEQ" type="xs:integer"/>
+                    <xs:element name="HOSTNAME" type="xs:string"/>
+                    <xs:element name="HID" type="xs:integer"/>
+                    <xs:element name="CID" type="xs:integer"/>
+                    <xs:element name="STIME" type="xs:integer"/>
+                    <xs:element name="ETIME" type="xs:integer"/>
+                    <xs:element name="VMMMAD" type="xs:string"/>
+                    <xs:element name="VNMMAD" type="xs:string"/>
+                    <xs:element name="TMMAD" type="xs:string"/>
+                    <xs:element name="DS_LOCATION" type="xs:string"/>
+                    <xs:element name="DS_ID" type="xs:integer"/>
+                    <xs:element name="PSTIME" type="xs:integer"/>
+                    <xs:element name="PETIME" type="xs:integer"/>
+                    <xs:element name="RSTIME" type="xs:integer"/>
+                    <xs:element name="RETIME" type="xs:integer"/>
+                    <xs:element name="ESTIME" type="xs:integer"/>
+                    <xs:element name="EETIME" type="xs:integer"/>
+
+                    <!-- REASON values:
+                      NONE  = 0 History record is not closed yet
+                      ERROR = 1 History record was closed because of an error
+                      USER  = 2 History record was closed because of a user action
+                    -->
+                    <xs:element name="REASON" type="xs:integer"/>
+
+                    <!-- ACTION values:
+                      NONE_ACTION             = 0
+                      MIGRATE_ACTION          = 1
+                      LIVE_MIGRATE_ACTION     = 2
+                      SHUTDOWN_ACTION         = 3
+                      SHUTDOWN_HARD_ACTION    = 4
+                      UNDEPLOY_ACTION         = 5
+                      UNDEPLOY_HARD_ACTION    = 6
+                      HOLD_ACTION             = 7
+                      RELEASE_ACTION          = 8
+                      STOP_ACTION             = 9
+                      SUSPEND_ACTION          = 10
+                      RESUME_ACTION           = 11
+                      BOOT_ACTION             = 12
+                      DELETE_ACTION           = 13
+                      DELETE_RECREATE_ACTION  = 14
+                      REBOOT_ACTION           = 15
+                      REBOOT_HARD_ACTION      = 16
+                      RESCHED_ACTION          = 17
+                      UNRESCHED_ACTION        = 18
+                      POWEROFF_ACTION         = 19
+                      POWEROFF_HARD_ACTION    = 20
+                    -->
+                    <xs:element name="ACTION" type="xs:integer"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
