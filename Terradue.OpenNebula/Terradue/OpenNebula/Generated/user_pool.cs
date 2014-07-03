@@ -19,8 +19,8 @@ namespace Terradue.OpenNebula {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://opennebula.org/XMLSchema")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace="http://opennebula.org/XMLSchema", IsNullable=false)]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="")]
+    
     public partial class USER_POOL {
         
         private object[] itemsField;
@@ -55,7 +55,7 @@ namespace Terradue.OpenNebula {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://opennebula.org/XMLSchema")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="")]
     public partial class USER_POOLUSER {
         
         private string iDField;
@@ -176,7 +176,7 @@ namespace Terradue.OpenNebula {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://opennebula.org/XMLSchema")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="")]
     public partial class USER_POOLQUOTAS {
         
         private string iDField1;
@@ -249,7 +249,7 @@ namespace Terradue.OpenNebula {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://opennebula.org/XMLSchema")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="")]
     public partial class USER_POOLQUOTASDATASTORE_QUOTADATASTORE {
         
         private string iDField2;
@@ -318,7 +318,7 @@ namespace Terradue.OpenNebula {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://opennebula.org/XMLSchema")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="")]
     public partial class USER_POOLQUOTASNETWORK_QUOTANETWORK {
         
         private string iDField3;
@@ -363,7 +363,7 @@ namespace Terradue.OpenNebula {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://opennebula.org/XMLSchema")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="")]
     public partial class USER_POOLQUOTASVM_QUOTA {
         
         private USER_POOLQUOTASVM_QUOTAVM vMField;
@@ -384,7 +384,7 @@ namespace Terradue.OpenNebula {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://opennebula.org/XMLSchema")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="")]
     public partial class USER_POOLQUOTASVM_QUOTAVM {
         
         private string cPUField;
@@ -489,7 +489,7 @@ namespace Terradue.OpenNebula {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://opennebula.org/XMLSchema")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="")]
     public partial class USER_POOLQUOTASIMAGE_QUOTAIMAGE {
         
         private string iDField4;
@@ -534,7 +534,7 @@ namespace Terradue.OpenNebula {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://opennebula.org/XMLSchema")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="")]
     public partial class USER_POOLDEFAULT_USER_QUOTAS {
         
         private USER_POOLDEFAULT_USER_QUOTASDATASTORE_QUOTADATASTORE[] dATASTORE_QUOTAField1;
@@ -594,7 +594,7 @@ namespace Terradue.OpenNebula {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://opennebula.org/XMLSchema")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="")]
     public partial class USER_POOLDEFAULT_USER_QUOTASDATASTORE_QUOTADATASTORE {
         
         private string iDField5;
@@ -663,7 +663,7 @@ namespace Terradue.OpenNebula {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://opennebula.org/XMLSchema")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="")]
     public partial class USER_POOLDEFAULT_USER_QUOTASNETWORK_QUOTANETWORK {
         
         private string iDField6;
@@ -708,7 +708,7 @@ namespace Terradue.OpenNebula {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://opennebula.org/XMLSchema")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="")]
     public partial class USER_POOLDEFAULT_USER_QUOTASVM_QUOTA {
         
         private USER_POOLDEFAULT_USER_QUOTASVM_QUOTAVM vMField1;
@@ -729,7 +729,7 @@ namespace Terradue.OpenNebula {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://opennebula.org/XMLSchema")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="")]
     public partial class USER_POOLDEFAULT_USER_QUOTASVM_QUOTAVM {
         
         private string cPUField1;
@@ -810,7 +810,7 @@ namespace Terradue.OpenNebula {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://opennebula.org/XMLSchema")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="")]
     public partial class USER_POOLDEFAULT_USER_QUOTASIMAGE_QUOTAIMAGE {
         
         private string iDField7;
@@ -855,8 +855,8 @@ namespace Terradue.OpenNebula {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://opennebula.org/XMLSchema")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace="http://opennebula.org/XMLSchema", IsNullable=false)]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="")]
+    
     public partial class USER {
         
         private string iDField8;
@@ -1040,7 +1040,7 @@ namespace Terradue.OpenNebula {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://opennebula.org/XMLSchema")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="")]
     public partial class USERDATASTORE_QUOTADATASTORE {
         
         private string iDField9;
@@ -1109,7 +1109,7 @@ namespace Terradue.OpenNebula {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://opennebula.org/XMLSchema")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="")]
     public partial class USERNETWORK_QUOTANETWORK {
         
         private string iDField10;
@@ -1154,7 +1154,7 @@ namespace Terradue.OpenNebula {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://opennebula.org/XMLSchema")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="")]
     public partial class USERVM_QUOTA {
         
         private USERVM_QUOTAVM vMField2;
@@ -1175,7 +1175,7 @@ namespace Terradue.OpenNebula {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://opennebula.org/XMLSchema")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="")]
     public partial class USERVM_QUOTAVM {
         
         private string cPUField2;
@@ -1280,7 +1280,7 @@ namespace Terradue.OpenNebula {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://opennebula.org/XMLSchema")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="")]
     public partial class USERIMAGE_QUOTAIMAGE {
         
         private string iDField11;
@@ -1325,7 +1325,7 @@ namespace Terradue.OpenNebula {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://opennebula.org/XMLSchema")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="")]
     public partial class USERDEFAULT_USER_QUOTAS {
         
         private USERDEFAULT_USER_QUOTASDATASTORE_QUOTADATASTORE[] dATASTORE_QUOTAField3;
@@ -1385,7 +1385,7 @@ namespace Terradue.OpenNebula {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://opennebula.org/XMLSchema")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="")]
     public partial class USERDEFAULT_USER_QUOTASDATASTORE_QUOTADATASTORE {
         
         private string iDField12;
@@ -1454,7 +1454,7 @@ namespace Terradue.OpenNebula {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://opennebula.org/XMLSchema")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="")]
     public partial class USERDEFAULT_USER_QUOTASNETWORK_QUOTANETWORK {
         
         private string iDField13;
@@ -1499,7 +1499,7 @@ namespace Terradue.OpenNebula {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://opennebula.org/XMLSchema")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="")]
     public partial class USERDEFAULT_USER_QUOTASVM_QUOTA {
         
         private USERDEFAULT_USER_QUOTASVM_QUOTAVM vMField3;
@@ -1520,7 +1520,7 @@ namespace Terradue.OpenNebula {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://opennebula.org/XMLSchema")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="")]
     public partial class USERDEFAULT_USER_QUOTASVM_QUOTAVM {
         
         private string cPUField3;
@@ -1601,7 +1601,7 @@ namespace Terradue.OpenNebula {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://opennebula.org/XMLSchema")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="")]
     public partial class USERDEFAULT_USER_QUOTASIMAGE_QUOTAIMAGE {
         
         private string iDField14;

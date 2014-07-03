@@ -31,24 +31,42 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
+    <Reference Include="ServiceStack.Text">
+      <HintPath>..\packages\ServiceStack.Text.3.9.71\lib\net35\ServiceStack.Text.dll</HintPath>
+    </Reference>
+    <Reference Include="CookComputing.XmlRpcV2">
+      <HintPath>..\packages\xmlrpcnet.2.5.0\lib\net20\CookComputing.XmlRpcV2.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Terradue\OpenNebula\acct.cs" />
-    <Compile Include="Terradue\OpenNebula\cluster_pool.cs" />
-    <Compile Include="Terradue\OpenNebula\datastore_pool.cs" />
-    <Compile Include="Terradue\OpenNebula\group_pool.cs" />
-    <Compile Include="Terradue\OpenNebula\host_pool.cs" />
-    <Compile Include="Terradue\OpenNebula\image_pool.cs" />
-    <Compile Include="Terradue\OpenNebula\user_pool.cs" />
-    <Compile Include="Terradue\OpenNebula\vm_pool.cs" />
-    <Compile Include="Terradue\OpenNebula\vmtemplate_pool.cs" />
-    <Compile Include="Terradue\OpenNebula\vnet_pool.cs" />
+    <Compile Include="Terradue\OpenNebula\OneUser.cs" />
+    <Compile Include="Terradue\OpenNebula\Generated\acct.cs" />
+    <Compile Include="Terradue\OpenNebula\Generated\cluster_pool.cs" />
+    <Compile Include="Terradue\OpenNebula\Generated\datastore_pool.cs" />
+    <Compile Include="Terradue\OpenNebula\Generated\group_pool.cs" />
+    <Compile Include="Terradue\OpenNebula\Generated\host_pool.cs" />
+    <Compile Include="Terradue\OpenNebula\Generated\image_pool.cs" />
+    <Compile Include="Terradue\OpenNebula\Generated\user_pool.cs" />
+    <Compile Include="Terradue\OpenNebula\Generated\vm_pool.cs" />
+    <Compile Include="Terradue\OpenNebula\Generated\vmtemplate_pool.cs" />
+    <Compile Include="Terradue\OpenNebula\Generated\vnet_pool.cs" />
+    <Compile Include="Terradue\OpenNebula\XmlRpc\XmlRpcUserManagement.cs" />
+    <Compile Include="Terradue\OpenNebula\XmlRpc\XmlRpcImageManagement.cs" />
+    <Compile Include="Terradue\OpenNebula\XmlRpc\Configuration.cs" />
+    <Compile Include="Terradue\OpenNebula\XmlRpc\XmlRpcTemplateManagement.cs" />
+    <Compile Include="Terradue\OpenNebula\XmlRpc\XmlRpcVirtualMachineManagement.cs" />
+    <Compile Include="Terradue\OpenNebula\XmlRpc\XmlRpcVirtualNetworkManagement.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="Terradue\" />
     <Folder Include="Terradue\OpenNebula\" />
     <Folder Include="xsd\" />
+    <Folder Include="Terradue\OpenNebula\Generated\" />
+    <Folder Include="Terradue\OpenNebula\XmlRpc\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>
