@@ -104,7 +104,7 @@ namespace Terradue.OpenNebula {
         /// <returns><c>true</c>, if disk was detached, <c>false</c> otherwise.</returns>
         /// <param name="id">Identifier.</param>
         /// <param name="diskId">Disk identifier.</param>
-        public bool DetachDiskVM(int id, int diskId){
+        public bool VMDetachDiskVM(int id, int diskId){
             bool result = false;
             XmlRpcVirtualMachineManagement xrum = XmlRpcProxyGen.Create<XmlRpcVirtualMachineManagement>();
             Array openNebulaReturnArr = xrum.oneVirtualMachineDetach(this.SessionSHA, id, diskId);
@@ -145,6 +145,20 @@ namespace Terradue.OpenNebula {
             bool result = false;
             XmlRpcVirtualMachineManagement xrum = XmlRpcProxyGen.Create<XmlRpcVirtualMachineManagement>();
             Array openNebulaReturnArr = xrum.oneVirtualMachineChangeOwner(this.SessionSHA, id, newUserID, newGroupId);
+            result = (bool)openNebulaReturnArr.GetValue(0);
+            return result;
+        }
+
+        /// <summary>
+        /// Renames the VM
+        /// </summary>
+        /// <returns><c>true</c>, if VM was renamed, <c>false</c> otherwise.</returns>
+        /// <param name="id">Identifier.</param>
+        /// <param name="newName">New name.</param>
+        public bool RenameVM(int id, string newName){
+            bool result = false;
+            XmlRpcVirtualMachineManagement xrum = XmlRpcProxyGen.Create<XmlRpcVirtualMachineManagement>();
+            Array openNebulaReturnArr = xrum.oneVirtualMachineRename(this.SessionSHA, id, newName);
             result = (bool)openNebulaReturnArr.GetValue(0);
             return result;
         }

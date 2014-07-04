@@ -107,6 +107,17 @@ namespace Terradue.OpenNebula {
             OUT  Int     Error code.*/
 
 
+        /* ----- NOT YET IMPLEMENTED ----- 
+
+        one.vn.rmleases
+        one.vn.update
+        one.vn.allocate
+        one.vn.delete
+        one.vn.chown
+        one.vn.chmod
+        one.vn.rename
+
+        */
     }
 }
 

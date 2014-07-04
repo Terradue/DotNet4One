@@ -137,6 +137,17 @@ namespace Terradue.OpenNebula {
             OUT  String  The information string / The error string.
             OUT  Int     Error code.*/
 
+
+
+
+        /* ----- NOT YET IMPLEMENTED ----- 
+
+        one.user.chauth
+        one.userquota.info
+        one.userquota.update
+
+        */
+
     }
 }
 

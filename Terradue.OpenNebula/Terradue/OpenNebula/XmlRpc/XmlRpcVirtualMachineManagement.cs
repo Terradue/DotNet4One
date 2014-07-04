@@ -134,6 +134,19 @@ namespace Terradue.OpenNebula {
             OUT  Int     Error code.*/
 
 
+        [XmlRpcMethod("one.vm.rename")]
+        Array oneVirtualMachineRename(string sessionSHA, int vmId, string newName);
+
+        /*Description: Renames a virtual machine
+
+            IN  String  The session string.
+            IN  Int     The object ID.
+            IN  String  The new name.
+            OUT Boolean     true or false whenever is successful or not
+            OUT Int/String  The VM ID / The error string.
+            OUT Int     Error code.*/
+
+
 
 
         [XmlRpcMethod("one.vm.chmod")]
@@ -317,5 +330,19 @@ namespace Terradue.OpenNebula {
             The XML output is explained in detail in the accounting''oneacct'' guide.*/
 
     }
+
+
+    /* ----- NOT YET IMPLEMENTED ----- 
+
+    one.vm.attachnic
+    one.vm.detachnic
+    one.vm.snapshotcreate
+    one.vm.snapshotdelete
+    one.vm.snapshotrevert
+    one.vm.resize
+    one.vm.update
+    one.vm.recover
+    
+    */
 }
 
