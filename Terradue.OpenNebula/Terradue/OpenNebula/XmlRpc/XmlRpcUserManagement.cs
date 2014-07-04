@@ -138,6 +138,44 @@ namespace Terradue.OpenNebula {
             OUT  Int     Error code.*/
 
 
+        [XmlRpcMethod("one.user.chauth")]
+        Array oneUserChauth(string sessionSHA, int userId, string newAuthDriver, string newPassword);
+
+        /*Description: Changes the authentication driver and the password for the given user.
+
+            IN  String  The session string.
+            IN  Int     The object ID.
+            IN  String  The new authentication driver.
+            IN  String  The new password. If it is an empty string, the password is not changed.
+            OUT Boolean     true or false whenever is successful or not
+            OUT Int/String  The User ID / The error string.
+            OUT Int     Error code.
+        */
+
+
+        [XmlRpcMethod("one.userquota.info")]
+        Array oneUserQuotaInfo(string sessionSHA);
+
+        /*Description: Returns the default user quota limits.
+
+            IN  String  The session string.
+            OUT Boolean     true or false whenever is successful or not
+            OUT String  The quota template contents / The error string.
+            OUT Int     Error code.
+        */
+
+
+        [XmlRpcMethod("one.userquota.update")]
+        Array oneUserQuotaUpdate(string sessionSHA, string newQuotaTemplate);
+
+        /*Description: Updates the default user quota limits.
+
+            IN  String  The session string.
+            IN  String  The new quota template contents. Syntax can be the usual attribute=value or XML.
+            OUT Boolean     true or false whenever is successful or not
+            OUT String  The quota template contents / The error string.
+            OUT Int Error code.
+        */
 
 
         /* ----- NOT YET IMPLEMENTED ----- 

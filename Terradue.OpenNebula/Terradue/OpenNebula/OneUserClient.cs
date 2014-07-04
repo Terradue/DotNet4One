@@ -161,6 +161,46 @@ namespace Terradue.OpenNebula {
             return result;
         }
 
+        /// <summary>
+        /// Changes the user authentication driver and the password 
+        /// </summary>
+        /// <returns><c>true</c>, if user auth was changed, <c>false</c> otherwise.</returns>
+        /// <param name="id">Identifier.</param>
+        /// <param name="newAuthDriver">New auth driver.</param>
+        /// <param name="newPassword">New password.</param>
+        public bool ChangeUserAuth(int id, string newAuthDriver, string newPassword){
+            bool result = false;
+            XmlRpcUserManagement xrum = XmlRpcProxyGen.Create<XmlRpcUserManagement>();
+            Array openNebulaReturnArr = xrum.oneUserChauth(this.SessionSHA, id, newAuthDriver, newPassword);
+            result = (bool)openNebulaReturnArr.GetValue(0);
+            return result;
+        }
+
+        /// <summary>
+        /// Get the Users quota info.
+        /// </summary>
+        /// <returns>The quota info.</returns>
+        public USERDEFAULT_USER_QUOTAS GetUserQuotaInfo(){
+            USERDEFAULT_USER_QUOTAS result = null;
+            XmlRpcUserManagement xrum = XmlRpcProxyGen.Create<XmlRpcUserManagement>();
+            Array openNebulaReturnArr = xrum.oneUserQuotaInfo(this.SessionSHA);
+            result = (USERDEFAULT_USER_QUOTAS)Deserialize(typeof(USERDEFAULT_USER_QUOTAS), openNebulaReturnArr.GetValue(1).ToString());
+            return result;
+        }
+
+        /// <summary>
+        /// Updates the user quota.
+        /// </summary>
+        /// <returns>The user quota.</returns>
+        /// <param name="newQuotaTemplate">New quota template.</param>
+        public USERDEFAULT_USER_QUOTAS UpdateUserQuota(string newQuotaTemplate){
+            USERDEFAULT_USER_QUOTAS result = null;
+            XmlRpcUserManagement xrum = XmlRpcProxyGen.Create<XmlRpcUserManagement>();
+            Array openNebulaReturnArr = xrum.oneUserQuotaUpdate(this.SessionSHA, newQuotaTemplate);
+            result = (USERDEFAULT_USER_QUOTAS)Deserialize(typeof(USERDEFAULT_USER_QUOTAS), openNebulaReturnArr.GetValue(1).ToString());
+            return result;
+        }
+
     }
 }
 

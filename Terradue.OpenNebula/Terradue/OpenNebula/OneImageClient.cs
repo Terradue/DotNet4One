@@ -144,7 +144,7 @@ namespace Terradue.OpenNebula {
         public bool ImageChown(int id, int imageId, int newOwnerId, int newGroupId){
             bool result = false;
             XmlRpcImageManagement xrum = XmlRpcProxyGen.Create<XmlRpcImageManagement>();
-            Array openNebulaReturnArr = xrum.oneImageChangeOwner(this.SessionSHA, id, imageId, newOwnerId, newGroupId);
+            Array openNebulaReturnArr = xrum.oneImageChangeOwner(this.SessionSHA, id, newOwnerId, newGroupId);
             result = (bool)openNebulaReturnArr.GetValue(0);
             return result;
         }
