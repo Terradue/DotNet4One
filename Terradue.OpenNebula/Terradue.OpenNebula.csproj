@@ -60,6 +60,7 @@
     <Compile Include="Terradue\OpenNebula\OneClient.cs" />
     <Compile Include="Terradue\OpenNebula\OneTemplateClient.cs" />
     <Compile Include="Terradue\OpenNebula\OneVirtualMachineClient.cs" />
+    <Compile Include="Terradue\OpenNebula\OneVirtualNetworkClient.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
