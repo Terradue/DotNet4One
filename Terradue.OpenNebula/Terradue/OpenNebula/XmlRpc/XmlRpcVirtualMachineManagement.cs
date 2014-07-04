@@ -107,7 +107,7 @@ namespace Terradue.OpenNebula {
 
 
         [XmlRpcMethod("one.vm.attach")]
-        Array oneVirtualMachineAttach(string sessionSHA, int vmId, string atributeValueSingleDiskVector);
+        Array oneVirtualMachineAttach(string sessionSHA, int vmId, string attributeValueSingleDiskVector);
 
         /*Description: Attaches a new disk to the virtual machine
 

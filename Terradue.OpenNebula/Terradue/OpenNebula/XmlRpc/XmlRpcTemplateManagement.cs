@@ -118,7 +118,18 @@ namespace Terradue.OpenNebula {
             OUT  Int     Error code.*/
 
 
+        [XmlRpcMethod("one.template.rename")]
+        Array oneTemplateRename(string sessionSHA, int templateId, string newName);
 
+        /*Description: Renames a template.
+
+            IN  String  The session string.
+            IN  Int     The object ID.
+            IN  String  The new name.
+            OUT Boolean     true or false whenever is successful or not
+            OUT Int/String  The VM ID / The error string.
+            OUT Int     Error code.*/
+            
 
         [XmlRpcMethod("one.template.info")]
         Array oneTemplateInfo(string sessionSHA, int templateId);
