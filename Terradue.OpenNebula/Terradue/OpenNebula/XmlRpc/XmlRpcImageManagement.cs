@@ -152,6 +152,17 @@ namespace Terradue.OpenNebula {
             OUT  Int     Error code.*/
 
 
+        [XmlRpcMethod("one.image.rename")]
+        Array oneImageRename(string sessionSHA, int imageId, string newName);
+
+        /*Description: Renames an image.
+
+            IN  String  The session string.
+            IN  Int     The object ID.
+            IN  String  The new name.
+            OUT Boolean     true or false whenever is successful or not
+            OUT Int/String  The VM ID / The error string.
+            OUT Int     Error code.*/
 
 
         [XmlRpcMethod("one.image.info")]
@@ -187,6 +198,7 @@ namespace Terradue.OpenNebula {
             OUT  Int     Error code.
             The range can be used to retrieve a subset of the pool, from the 'start' to the 'end' ID. To retrieve the complete pool, use (-1, -1); to retrieve all the pool from a specific ID to the last one, use (<id>, -1), and to retrieve the first elements up to an ID, use (0, <id>).
              */
+
 
     }
 }
