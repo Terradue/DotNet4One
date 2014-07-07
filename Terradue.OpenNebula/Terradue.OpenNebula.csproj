@@ -68,6 +68,8 @@
     <Compile Include="Terradue\OpenNebula\XmlRpc\XmlRpcClusterManagement.cs" />
     <Compile Include="Terradue\OpenNebula\XmlRpc\XmlRpcGroupManagement.cs" />
     <Compile Include="Terradue\OpenNebula\OneGroupClient.cs" />
+    <Compile Include="Terradue\OpenNebula\XmlRpc\XmlRpcDatastoreManagement.cs" />
+    <Compile Include="Terradue\OpenNebula\OneDatastoreClient.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
