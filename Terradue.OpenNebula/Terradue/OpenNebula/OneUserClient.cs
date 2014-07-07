@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Net;
-using System.IO;
-using ServiceStack.Text;
 using CookComputing.XmlRpc;
 
 namespace Terradue.OpenNebula {
@@ -153,7 +150,7 @@ namespace Terradue.OpenNebula {
         /// <returns><c>true</c>, if user from group was removed, <c>false</c> otherwise.</returns>
         /// <param name="id">Identifier.</param>
         /// <param name="grpId">Group identifier.</param>
-        public bool RemoveUserFromGroup(int id, int grpId){
+        public bool DeleteUserFromGroup(int id, int grpId){
             bool result = false;
             XmlRpcUserManagement xrum = XmlRpcProxyGen.Create<XmlRpcUserManagement>();
             Array openNebulaReturnArr = xrum.oneUserDelGroup(this.SessionSHA, id, grpId);

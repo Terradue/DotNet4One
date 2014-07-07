@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Net;
-using System.IO;
-using ServiceStack.Text;
 using CookComputing.XmlRpc;
 
 namespace Terradue.OpenNebula {

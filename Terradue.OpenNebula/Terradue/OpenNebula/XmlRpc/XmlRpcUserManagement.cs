@@ -1,11 +1,13 @@
 ﻿using System;
 using CookComputing.XmlRpc;
 
-namespace Terradue.OpenNebula {
 
     /*
      * Inspired from OpenNebula-CSharp-Adapter (https://github.com/Neuralab/OpenNebula-CSharp-Adapter)
     */
+
+
+namespace Terradue.OpenNebula {
 
     [XmlRpcUrl(Terradue.OpenNebula.Configuration.XMLRPC_SERVER)]
     public interface XmlRpcUserManagement : IXmlRpcProxy
@@ -21,7 +23,8 @@ namespace Terradue.OpenNebula {
            IN    String  authentication driver for the new user. If it is an empty string, then the default ('core') is used
            OUT   Boolean     true or false whenever is successful or not
            OUT   Int/String  The allocated User ID / The error string.
-           OUT   Int     Error code.*/
+           OUT   Int     Error code.
+        */
 
 
         [XmlRpcMethod("one.user.update")]
@@ -35,7 +38,8 @@ namespace Terradue.OpenNebula {
            IN    Int     Update type: 0: Replace the whole template. 1: Merge new template with the existing one.
            OUT   Boolean     true or false whenever is successful or not
            OUT   Int/String  The resource ID / The error string.
-           OUT   Int     Error code.*/
+           OUT   Int     Error code.
+        */
 
 
         [XmlRpcMethod("one.user.info")]
@@ -47,7 +51,8 @@ namespace Terradue.OpenNebula {
             IN   Int     The object ID. If it is -1, then the connected user's own info info is returned
             OUT  Boolean     true or false whenever is successful or not
             OUT  String  The information string / The error string.
-            OUT  Int     Error code.*/
+            OUT  Int     Error code.
+        */
 
 
         [XmlRpcMethod("one.user.delete")]
@@ -59,7 +64,8 @@ namespace Terradue.OpenNebula {
             IN   Int     The object ID.
             OUT  Boolean     true or false whenever is successful or not
             OUT  Int/String  The resource ID / The error string.
-            OUT  Int     Error code.*/
+            OUT  Int     Error code.
+        */
 
 
         [XmlRpcMethod("one.user.passwd")]
@@ -72,7 +78,8 @@ namespace Terradue.OpenNebula {
             IN   String  The new password
             OUT  Boolean     true or false whenever is successful or not
             OUT  Int/String  The User ID / The error string.
-            OUT  Int     Error code.*/
+            OUT  Int     Error code.
+        */
 
 
         [XmlRpcMethod("one.user.quota")]
@@ -85,7 +92,8 @@ namespace Terradue.OpenNebula {
             IN   String  The new quota template contents. Syntax can be the usual “attribute=value” or XML.
             OUT  Boolean     true or false whenever is successful or not
             OUT  Int/String  The resource ID / The error string.
-            OUT  Int     Error code.*/
+            OUT  Int     Error code.
+        */
 
 
         [XmlRpcMethod("one.user.chgrp")]
@@ -98,7 +106,8 @@ namespace Terradue.OpenNebula {
             IN   Int     The Group ID of the new group.
             OUT  Boolean     true or false whenever is successful or not
             OUT  Int/String  The User ID / The error string.
-            OUT  Int     Error code.*/
+            OUT  Int     Error code.
+        */
 
 
         [XmlRpcMethod("one.user.addgroup")]
@@ -111,7 +120,8 @@ namespace Terradue.OpenNebula {
             IN  Int     The Group ID of the new group.
             OUT Boolean     true or false whenever is successful or not
             OUT Int/String  The User ID / The error string.
-            OUT Int     Error code.*/
+            OUT Int     Error code.
+        */
 
 
         [XmlRpcMethod("one.user.delgroup")]
@@ -124,7 +134,8 @@ namespace Terradue.OpenNebula {
             IN  Int     The Group ID.
             OUT Boolean     true or false whenever is successful or not
             OUT Int/String  The User ID / The error string.
-            OUT Int     Error code.*/
+            OUT Int     Error code.
+        */
 
 
         [XmlRpcMethod("one.userpool.info")]
@@ -135,7 +146,8 @@ namespace Terradue.OpenNebula {
             IN   String  The session string.
             OUT  Boolean     true or false whenever is successful or not
             OUT  String  The information string / The error string.
-            OUT  Int     Error code.*/
+            OUT  Int     Error code.
+        */
 
 
         [XmlRpcMethod("one.user.chauth")]
@@ -175,15 +187,6 @@ namespace Terradue.OpenNebula {
             OUT Boolean     true or false whenever is successful or not
             OUT String  The quota template contents / The error string.
             OUT Int Error code.
-        */
-
-
-        /* ----- NOT YET IMPLEMENTED ----- 
-
-        one.user.chauth
-        one.userquota.info
-        one.userquota.update
-
         */
 
     }
