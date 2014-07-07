@@ -63,6 +63,11 @@
     <Compile Include="Terradue\OpenNebula\OneVirtualNetworkClient.cs" />
     <Compile Include="Terradue\OpenNebula\OneImageClient.cs" />
     <Compile Include="Terradue\OpenNebula\XmlRpc\XmlRpcHostManagement.cs" />
+    <Compile Include="Terradue\OpenNebula\OneHostClient.cs" />
+    <Compile Include="Terradue\OpenNebula\OneClusterClient.cs" />
+    <Compile Include="Terradue\OpenNebula\XmlRpc\XmlRpcClusterManagement.cs" />
+    <Compile Include="Terradue\OpenNebula\XmlRpc\XmlRpcGroupManagement.cs" />
+    <Compile Include="Terradue\OpenNebula\OneGroupClient.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

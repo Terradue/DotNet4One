@@ -90,12 +90,11 @@ namespace Terradue.OpenNebula {
         */
 
         [XmlRpcMethod("one.hostpool.info")]
-        Array oneHostPoolInfo(string sessionSHA, string atributeValueContent);
+        Array oneHostPoolInfo(string sessionSHA);
 
-        /*Description: Returns the host monitoring records.
+        /*Description: Retrieves information for all the hosts in the pool.
 
             IN  String  The session string.
-            IN  Int     The object ID.
             OUT Boolean true or false whenever is successful or not
             OUT String  The monitoring information string / The error string.
             OUT Int     Error code.

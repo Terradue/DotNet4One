@@ -16,11 +16,11 @@ namespace Terradue.OpenNebula {
         public OneTemplateClient(string adminUsername, string adminPassword) : base(adminUsername, adminPassword){}
 
         /// <summary>
-        /// Creates the template.
+        /// Allocates the template.
         /// </summary>
-        /// <returns>The template id.</returns>
-        /// <param name="content">Template Content.</param>
-        public int CreateTemplate(string content){
+        /// <returns>The template ID.</returns>
+        /// <param name="content">Content.</param>
+        public int AllocateTemplate(string content){
             int result = 0;
             XmlRpcTemplateManagement xrum = XmlRpcProxyGen.Create<XmlRpcTemplateManagement>();
             Array openNebulaReturnArr = xrum.oneTemplateAllocate(this.SessionSHA, content);

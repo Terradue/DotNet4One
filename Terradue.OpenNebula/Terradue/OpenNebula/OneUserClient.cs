@@ -55,7 +55,7 @@ namespace Terradue.OpenNebula {
         /// <param name="username">Username.</param>
         /// <param name="password">Password.</param>
         /// <param name="authdriver">Authdriver.</param>
-        public int CreateUser(string username, string password, string authdriver){
+        public int AllocateUser(string username, string password, string authdriver){
             int result = 0;
             XmlRpcUserManagement xrum = XmlRpcProxyGen.Create<XmlRpcUserManagement>();
             Array openNebulaReturnArr = xrum.oneUserAllocate(this.SessionSHA, username, password, authdriver);
