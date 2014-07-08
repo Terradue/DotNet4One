@@ -3,20 +3,13 @@ using CookComputing.XmlRpc;
 
 namespace Terradue.OpenNebula {
 
-    public class OneUserClient : OneClient {
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Terradue.OpenNebula.OneUserClient"/> class.
-        /// </summary>
-        /// <param name="adminUsername">Admin username.</param>
-        /// <param name="adminPassword">Admin password.</param>
-        public OneUserClient(string adminUsername, string adminPassword) : base(adminUsername, adminPassword){}
+    public partial class OneClient {
 
         /// <summary>
         /// Gets the user list info.
         /// </summary>
         /// <returns>The user list info.</returns>
-        public USER_POOL GetUserListInfo(){
+        public USER_POOL UserGetPoolInfo(){
             USER_POOL result = null;
             XmlRpcUserManagement xrum = XmlRpcProxyGen.Create<XmlRpcUserManagement>();
             Array openNebulaReturnArr = xrum.oneUserPoolInfo(this.SessionSHA);
@@ -29,7 +22,7 @@ namespace Terradue.OpenNebula {
         /// </summary>
         /// <returns>The user info.</returns>
         /// <param name="id">Identifier.</param>
-        public USER GetUserInfo(int id){
+        public USER UserGetInfo(int id){
             USER result = null;
             XmlRpcUserManagement xrum = XmlRpcProxyGen.Create<XmlRpcUserManagement>();
             Array openNebulaReturnArr = xrum.oneUserInfo(this.SessionSHA, id);
@@ -41,8 +34,8 @@ namespace Terradue.OpenNebula {
         /// Gets the connected user info.
         /// </summary>
         /// <returns>The user info.</returns>
-        public USER GetUserInfo(){
-            return GetUserInfo(-1);
+        public USER UserGetInfo(){
+            return UserGetInfo(-1);
         }
 
         /// <summary>
@@ -52,7 +45,7 @@ namespace Terradue.OpenNebula {
         /// <param name="username">Username.</param>
         /// <param name="password">Password.</param>
         /// <param name="authdriver">Authdriver.</param>
-        public int AllocateUser(string username, string password, string authdriver){
+        public int UserAllocate(string username, string password, string authdriver){
             int result = 0;
             XmlRpcUserManagement xrum = XmlRpcProxyGen.Create<XmlRpcUserManagement>();
             Array openNebulaReturnArr = xrum.oneUserAllocate(this.SessionSHA, username, password, authdriver);
@@ -66,7 +59,7 @@ namespace Terradue.OpenNebula {
         /// <returns>The user.</returns>
         /// <param name="username">Username.</param>
         /// <param name="id">Identifier.</param>
-        public bool DeleteUser(int id){
+        public bool UserDelete(int id){
             bool result = false;
             XmlRpcUserManagement xrum = XmlRpcProxyGen.Create<XmlRpcUserManagement>();
             Array openNebulaReturnArr = xrum.oneUserDelete(this.SessionSHA, id);
@@ -80,7 +73,7 @@ namespace Terradue.OpenNebula {
         /// <returns><c>true</c>, if user template was updated, <c>false</c> otherwise.</returns>
         /// <param name="id">Identifier.</param>
         /// <param name="template">Template.</param>
-        public bool UpdateUserTemplate(int id, string template){
+        public bool UserUpdate(int id, string template){
             bool result = false;
             XmlRpcUserManagement xrum = XmlRpcProxyGen.Create<XmlRpcUserManagement>();
             Array openNebulaReturnArr = xrum.oneUserUpdate(this.SessionSHA, id, template);
@@ -94,7 +87,7 @@ namespace Terradue.OpenNebula {
         /// <returns><c>true</c>, if user password was updated, <c>false</c> otherwise.</returns>
         /// <param name="id">Identifier.</param>
         /// <param name="newPassword">New password.</param>
-        public bool UpdateUserPassword(int id, string newPassword){
+        public bool UserUpdatePassword(int id, string newPassword){
             bool result = false;
             XmlRpcUserManagement xrum = XmlRpcProxyGen.Create<XmlRpcUserManagement>();
             Array openNebulaReturnArr = xrum.oneUserPassword(this.SessionSHA, id, newPassword);
@@ -108,7 +101,7 @@ namespace Terradue.OpenNebula {
         /// <returns><c>true</c>, if user quota was updated, <c>false</c> otherwise.</returns>
         /// <param name="id">User Identifier.</param>
         /// <param name="newQuota">New quota.</param>
-        public bool UpdateUserQuota(int id, string newQuota){
+        public bool UserUpdateQuota(int id, string newQuota){
             bool result = false;
             XmlRpcUserManagement xrum = XmlRpcProxyGen.Create<XmlRpcUserManagement>();
             Array openNebulaReturnArr = xrum.oneUserQuota(this.SessionSHA, id, newQuota);
@@ -122,7 +115,7 @@ namespace Terradue.OpenNebula {
         /// <returns><c>true</c>, if user group was updated, <c>false</c> otherwise.</returns>
         /// <param name="id">Identifier.</param>
         /// <param name="newGrpId">New group identifier.</param>
-        public bool UpdateUserGroup(int id, int newGrpId){
+        public bool UserUpdateGroup(int id, int newGrpId){
             bool result = false;
             XmlRpcUserManagement xrum = XmlRpcProxyGen.Create<XmlRpcUserManagement>();
             Array openNebulaReturnArr = xrum.oneUserChangeGroup(this.SessionSHA, id, newGrpId);
@@ -136,7 +129,7 @@ namespace Terradue.OpenNebula {
         /// <returns><c>true</c>, if user to group was added, <c>false</c> otherwise.</returns>
         /// <param name="id">Identifier.</param>
         /// <param name="newGrpId">New group identifier.</param>
-        public bool AddUserToGroup(int id, int newGrpId){
+        public bool UserAddGroup(int id, int newGrpId){
             bool result = false;
             XmlRpcUserManagement xrum = XmlRpcProxyGen.Create<XmlRpcUserManagement>();
             Array openNebulaReturnArr = xrum.oneUserAddGroup(this.SessionSHA, id, newGrpId);
@@ -150,7 +143,7 @@ namespace Terradue.OpenNebula {
         /// <returns><c>true</c>, if user from group was removed, <c>false</c> otherwise.</returns>
         /// <param name="id">Identifier.</param>
         /// <param name="grpId">Group identifier.</param>
-        public bool DeleteUserFromGroup(int id, int grpId){
+        public bool UserDeleteGroup(int id, int grpId){
             bool result = false;
             XmlRpcUserManagement xrum = XmlRpcProxyGen.Create<XmlRpcUserManagement>();
             Array openNebulaReturnArr = xrum.oneUserDelGroup(this.SessionSHA, id, grpId);
@@ -165,7 +158,7 @@ namespace Terradue.OpenNebula {
         /// <param name="id">Identifier.</param>
         /// <param name="newAuthDriver">New auth driver.</param>
         /// <param name="newPassword">New password.</param>
-        public bool ChangeUserAuth(int id, string newAuthDriver, string newPassword){
+        public bool UserChangeAuth(int id, string newAuthDriver, string newPassword){
             bool result = false;
             XmlRpcUserManagement xrum = XmlRpcProxyGen.Create<XmlRpcUserManagement>();
             Array openNebulaReturnArr = xrum.oneUserChauth(this.SessionSHA, id, newAuthDriver, newPassword);
@@ -177,7 +170,7 @@ namespace Terradue.OpenNebula {
         /// Get the Users quota info.
         /// </summary>
         /// <returns>The quota info.</returns>
-        public USERDEFAULT_USER_QUOTAS GetUserQuotaInfo(){
+        public USERDEFAULT_USER_QUOTAS UserGetQuotaInfo(){
             USERDEFAULT_USER_QUOTAS result = null;
             XmlRpcUserManagement xrum = XmlRpcProxyGen.Create<XmlRpcUserManagement>();
             Array openNebulaReturnArr = xrum.oneUserQuotaInfo(this.SessionSHA);
@@ -190,7 +183,7 @@ namespace Terradue.OpenNebula {
         /// </summary>
         /// <returns>The user quota.</returns>
         /// <param name="newQuotaTemplate">New quota template.</param>
-        public USERDEFAULT_USER_QUOTAS UpdateUserQuota(string newQuotaTemplate){
+        public USERDEFAULT_USER_QUOTAS UserUpdateQuota(string newQuotaTemplate){
             USERDEFAULT_USER_QUOTAS result = null;
             XmlRpcUserManagement xrum = XmlRpcProxyGen.Create<XmlRpcUserManagement>();
             Array openNebulaReturnArr = xrum.oneUserQuotaUpdate(this.SessionSHA, newQuotaTemplate);

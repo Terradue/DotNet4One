@@ -3,14 +3,7 @@ using CookComputing.XmlRpc;
 
 namespace Terradue.OpenNebula {
 
-    public class OneVirtualMachineClient : OneClient {
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Terradue.OpenNebula.OneVirtualMachineClient"/> class.
-        /// </summary>
-        /// <param name="adminUsername">Admin username.</param>
-        /// <param name="adminPassword">Admin password.</param>
-        public OneVirtualMachineClient(string adminUsername, string adminPassword) : base(adminUsername, adminPassword){}
+    public partial class OneClient {
 
         /// <summary>
         /// Allocates the Virtual Machine.
@@ -18,7 +11,7 @@ namespace Terradue.OpenNebula {
         /// <returns>The VM.</returns>
         /// <param name="id">Identifier.</param>
         /// <param name="template">Template for the VM.</param>
-        public int AllocateVM(string template){
+        public int VMAllocate(string template){
             int result = 0;
             XmlRpcVirtualMachineManagement xrum = XmlRpcProxyGen.Create<XmlRpcVirtualMachineManagement>();
             Array openNebulaReturnArr = xrum.oneVirtualMachineAllocate(this.SessionSHA, template);
@@ -32,7 +25,7 @@ namespace Terradue.OpenNebula {
         /// <returns><c>true</c>, if VM was deployed, <c>false</c> otherwise.</returns>
         /// <param name="id">Identifier.</param>
         /// <param name="hostId">Host identifier.</param>
-        public bool DeployVM(int id, int hostId){
+        public bool VMDeploy(int id, int hostId){
             bool result = false;
             XmlRpcVirtualMachineManagement xrum = XmlRpcProxyGen.Create<XmlRpcVirtualMachineManagement>();
             Array openNebulaReturnArr = xrum.oneVirtualMachineDeploy(this.SessionSHA, id, hostId);
@@ -46,7 +39,7 @@ namespace Terradue.OpenNebula {
         /// <returns><c>true</c>, if on VM was actioned, <c>false</c> otherwise.</returns>
         /// <param name="id">Identifier.</param>
         /// <param name="action">Action.</param>
-        public bool ActionOnVM(int id, string action){
+        public bool VMAction(int id, string action){
             bool result = false;
             XmlRpcVirtualMachineManagement xrum = XmlRpcProxyGen.Create<XmlRpcVirtualMachineManagement>();
             Array openNebulaReturnArr = xrum.oneVirtualMachineAction(this.SessionSHA, action, id);
@@ -60,7 +53,7 @@ namespace Terradue.OpenNebula {
         /// <returns><c>true</c>, if VM was migrated, <c>false</c> otherwise.</returns>
         /// <param name="id">Identifier.</param>
         /// <param name="targetId">Target identifier.</param>
-        public bool MigrateVM(int id, int targetId){
+        public bool VMMigrate(int id, int targetId){
             bool result = false;
             XmlRpcVirtualMachineManagement xrum = XmlRpcProxyGen.Create<XmlRpcVirtualMachineManagement>();
             Array openNebulaReturnArr = xrum.oneVirtualMachineMigrate(this.SessionSHA, id, targetId);
@@ -76,7 +69,7 @@ namespace Terradue.OpenNebula {
         /// <param name="diskId">Disk identifier.</param>
         /// <param name="newImageName">New image name.</param>
         /// <param name="newImageType">New image type.</param>
-        public int SaveDisksVM(int id, int diskId, string newImageName, string newImageType){
+        public int VMSaveDisks(int id, int diskId, string newImageName, string newImageType){
             int result = 0;
             XmlRpcVirtualMachineManagement xrum = XmlRpcProxyGen.Create<XmlRpcVirtualMachineManagement>();
             Array openNebulaReturnArr = xrum.oneVirtualMachineSaveDisk(this.SessionSHA, id, diskId, newImageName, newImageType);
@@ -90,7 +83,7 @@ namespace Terradue.OpenNebula {
         /// <returns><c>true</c>, if disk was attached, <c>false</c> otherwise.</returns>
         /// <param name="id">Identifier.</param>
         /// <param name="attributeValueSingleDiskVector">Attribute value single disk vector.</param>
-        public bool AttachDiskVM(int id, string attributeValueSingleDiskVector){
+        public bool VMAttachDisk(int id, string attributeValueSingleDiskVector){
             bool result = false;
             XmlRpcVirtualMachineManagement xrum = XmlRpcProxyGen.Create<XmlRpcVirtualMachineManagement>();
             Array openNebulaReturnArr = xrum.oneVirtualMachineAttach(this.SessionSHA, id, attributeValueSingleDiskVector);
@@ -104,7 +97,7 @@ namespace Terradue.OpenNebula {
         /// <returns><c>true</c>, if disk was detached, <c>false</c> otherwise.</returns>
         /// <param name="id">Identifier.</param>
         /// <param name="diskId">Disk identifier.</param>
-        public bool VMDetachDiskVM(int id, int diskId){
+        public bool VMDetachDisk(int id, int diskId){
             bool result = false;
             XmlRpcVirtualMachineManagement xrum = XmlRpcProxyGen.Create<XmlRpcVirtualMachineManagement>();
             Array openNebulaReturnArr = xrum.oneVirtualMachineDetach(this.SessionSHA, id, diskId);
@@ -155,7 +148,7 @@ namespace Terradue.OpenNebula {
         /// <returns><c>true</c>, if VM was renamed, <c>false</c> otherwise.</returns>
         /// <param name="id">Identifier.</param>
         /// <param name="newName">New name.</param>
-        public bool RenameVM(int id, string newName){
+        public bool VMRename(int id, string newName){
             bool result = false;
             XmlRpcVirtualMachineManagement xrum = XmlRpcProxyGen.Create<XmlRpcVirtualMachineManagement>();
             Array openNebulaReturnArr = xrum.oneVirtualMachineRename(this.SessionSHA, id, newName);
@@ -168,7 +161,7 @@ namespace Terradue.OpenNebula {
         /// </summary>
         /// <returns>The VM info.</returns>
         /// <param name="id">Identifier.</param>
-        public VM GetVMInfo(int id){
+        public VM VMGetInfo(int id){
             VM result = null;
             XmlRpcVirtualMachineManagement xrum = XmlRpcProxyGen.Create<XmlRpcVirtualMachineManagement>();
             Array openNebulaReturnArr = xrum.oneVirtualMachineInfo(this.SessionSHA, id);
@@ -185,7 +178,7 @@ namespace Terradue.OpenNebula {
         /// <param name="rangeStartId">Range start identifier.</param>
         /// <param name="rangeEndId">Range end identifier.</param>
         /// <param name="vmState">Vm state.</param>
-        public VM_POOL GetVMListInfo(int templateFilterFlag, int rangeStartId, int rangeEndId, int vmState){
+        public VM_POOL VMGetPoolInfo(int templateFilterFlag, int rangeStartId, int rangeEndId, int vmState){
             VM_POOL result = null;
             XmlRpcVirtualMachineManagement xrum = XmlRpcProxyGen.Create<XmlRpcVirtualMachineManagement>();
             Array openNebulaReturnArr = xrum.oneVirtualMachinePoolInfo(this.SessionSHA, templateFilterFlag, rangeStartId, rangeEndId, vmState);
@@ -198,7 +191,7 @@ namespace Terradue.OpenNebula {
         /// </summary>
         /// <returns>The VM monitoring info.</returns>
         /// <param name="id">Identifier.</param>
-        public VM_POOL GetVMMonitoringInfo(int id){
+        public VM_POOL VMGetMonitoringInfo(int id){
             VM_POOL result = null;
             XmlRpcVirtualMachineManagement xrum = XmlRpcProxyGen.Create<XmlRpcVirtualMachineManagement>();
             Array openNebulaReturnArr = xrum.oneVirtualMachineMonitoring(this.SessionSHA, id);
@@ -211,7 +204,7 @@ namespace Terradue.OpenNebula {
         /// </summary>
         /// <returns>The VM list monitoring info.</returns>
         /// <param name="vmFilterFlag">Vm filter flag.</param>
-        public VM_POOL GetVMListMonitoringInfo(int vmFilterFlag){
+        public VM_POOL VMGetPoolMonitoringInfo(int vmFilterFlag){
             VM_POOL result = null;
             XmlRpcVirtualMachineManagement xrum = XmlRpcProxyGen.Create<XmlRpcVirtualMachineManagement>();
             Array openNebulaReturnArr = xrum.oneVirtualMachinePoolMonitoring(this.SessionSHA, vmFilterFlag);
@@ -226,7 +219,7 @@ namespace Terradue.OpenNebula {
         /// <param name="vmFilterFlag">Vm filter flag.</param>
         /// <param name="startTime">Start time.</param>
         /// <param name="endTime">End time.</param>
-        public VMHISTORY_RECORDSHISTORY GetVMListHistory(int vmFilterFlag, int startTime, int endTime){
+        public VMHISTORY_RECORDSHISTORY VMGetListHistory(int vmFilterFlag, int startTime, int endTime){
             VMHISTORY_RECORDSHISTORY result = null;
             XmlRpcVirtualMachineManagement xrum = XmlRpcProxyGen.Create<XmlRpcVirtualMachineManagement>();
             Array openNebulaReturnArr = xrum.oneVirtualMachinePoolAccounting(this.SessionSHA, vmFilterFlag, startTime, endTime);

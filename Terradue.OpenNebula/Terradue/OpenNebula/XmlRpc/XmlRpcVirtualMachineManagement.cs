@@ -3,10 +3,6 @@ using CookComputing.XmlRpc;
 
 namespace Terradue.OpenNebula {
 
-    /*
-     * Inspired from OpenNebula-CSharp-Adapter (https://github.com/Neuralab/OpenNebula-CSharp-Adapter)
-    */
-
     [XmlRpcUrl(Terradue.OpenNebula.Configuration.XMLRPC_SERVER)]
     public interface XmlRpcVirtualMachineManagement : IXmlRpcProxy
     {

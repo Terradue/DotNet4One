@@ -3,23 +3,15 @@ using CookComputing.XmlRpc;
 
 namespace Terradue.OpenNebula {
 
-    public class OneVirtualNetworkClient : OneClient {
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Terradue.OpenNebula.OneVirtualNetworkClient"/> class.
-        /// </summary>
-        /// <param name="adminUsername">Admin username.</param>
-        /// <param name="adminPassword">Admin password.</param>
-        public OneVirtualNetworkClient(string adminUsername, string adminPassword) : base(adminUsername, adminPassword){}
-
-
+    public partial class OneClient {
+          
         /// <summary>
         /// Adds the lease to VN
         /// </summary>
         /// <returns><c>true</c>, if lease was added, <c>false</c> otherwise.</returns>
         /// <param name="id">Identifier.</param>
         /// <param name="leaseTemplate">Lease template.</param>
-        public bool AddLeaseToVN(int id, string leaseTemplate){
+        public bool VNetAddLease(int id, string leaseTemplate){
             bool result = false;
             XmlRpcVirtualNetworkManagement xrum = XmlRpcProxyGen.Create<XmlRpcVirtualNetworkManagement>();
             Array openNebulaReturnArr = xrum.oneVirtualNetworkAddLeases(this.SessionSHA, id, leaseTemplate);
@@ -33,7 +25,7 @@ namespace Terradue.OpenNebula {
         /// <returns><c>true</c>, if VN was held, <c>false</c> otherwise.</returns>
         /// <param name="id">Identifier.</param>
         /// <param name="holdTemplate">Hold template.</param>
-        public bool HoldVN(int id, string holdTemplate){
+        public bool VNetHold(int id, string holdTemplate){
             bool result = false;
             XmlRpcVirtualNetworkManagement xrum = XmlRpcProxyGen.Create<XmlRpcVirtualNetworkManagement>();
             Array openNebulaReturnArr = xrum.oneVirtualNetworkHold(this.SessionSHA, id, holdTemplate);
@@ -47,7 +39,7 @@ namespace Terradue.OpenNebula {
         /// <returns><c>true</c>, if V was released, <c>false</c> otherwise.</returns>
         /// <param name="id">Identifier.</param>
         /// <param name="releaseTemplate">Release template.</param>
-        public bool ReleaseVN(int id, string releaseTemplate){
+        public bool VNetRelease(int id, string releaseTemplate){
             bool result = false;
             XmlRpcVirtualNetworkManagement xrum = XmlRpcProxyGen.Create<XmlRpcVirtualNetworkManagement>();
             Array openNebulaReturnArr = xrum.oneVirtualNetworkRelease(this.SessionSHA, id, releaseTemplate);
@@ -60,7 +52,7 @@ namespace Terradue.OpenNebula {
         /// </summary>
         /// <returns>The VN info.</returns>
         /// <param name="id">Identifier.</param>
-        public VNET GetVNInfo(int id){
+        public VNET VNetGetInfo(int id){
             VNET result = null;
             XmlRpcVirtualNetworkManagement xrum = XmlRpcProxyGen.Create<XmlRpcVirtualNetworkManagement>();
             Array openNebulaReturnArr = xrum.oneVirtualNetworkInfo(this.SessionSHA, id);
@@ -76,7 +68,7 @@ namespace Terradue.OpenNebula {
         /// <param name="templateFilterFlag">Template filter flag.</param>
         /// <param name="rangeStartId">Range start identifier.</param>
         /// <param name="rangeEndId">Range end identifier.</param>
-        public VNET_POOL GetVNListInfo(int templateFilterFlag, int rangeStartId, int rangeEndId){
+        public VNET_POOL VNetGetPoolInfo(int templateFilterFlag, int rangeStartId, int rangeEndId){
             VNET_POOL result = null;
             XmlRpcVirtualNetworkManagement xrum = XmlRpcProxyGen.Create<XmlRpcVirtualNetworkManagement>();
             Array openNebulaReturnArr = xrum.oneVirtualNetworkPoolInfo(this.SessionSHA, templateFilterFlag, rangeStartId, rangeEndId);

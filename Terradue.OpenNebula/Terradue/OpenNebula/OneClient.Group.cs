@@ -3,21 +3,14 @@ using CookComputing.XmlRpc;
 
 namespace Terradue.OpenNebula {
 
-    public class OneGroupClient : OneClient {
+    public partial class OneClient {
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Terradue.OpenNebula.OneGroupClient"/> class.
-        /// </summary>
-        /// <param name="adminUsername">Admin username.</param>
-        /// <param name="adminPassword">Admin password.</param>
-        public OneGroupClient(string adminUsername, string adminPassword) : base(adminUsername, adminPassword){}
-       
         /// <summary>
         /// Allocates the group.
         /// </summary>
         /// <returns>The group.</returns>
         /// <param name="groupname">Groupname.</param>
-        public int AllocateGroup(string groupname){
+        public int GroupAllocate(string groupname){
             int result = 0;
             XmlRpcGroupManagement xrum = XmlRpcProxyGen.Create<XmlRpcGroupManagement>();
             Array openNebulaReturnArr = xrum.oneGroupAllocate(this.SessionSHA, groupname);
@@ -30,7 +23,7 @@ namespace Terradue.OpenNebula {
         /// </summary>
         /// <returns><c>true</c>, if group was deleted, <c>false</c> otherwise.</returns>
         /// <param name="groupId">Group identifier.</param>
-        public bool DeleteGroup(int groupId){
+        public bool GroupDelete(int groupId){
             bool result = false;
             XmlRpcGroupManagement xrum = XmlRpcProxyGen.Create<XmlRpcGroupManagement>();
             Array openNebulaReturnArr = xrum.oneGroupDelete(this.SessionSHA, groupId);
@@ -43,7 +36,7 @@ namespace Terradue.OpenNebula {
         /// </summary>
         /// <returns>The group info.</returns>
         /// <param name="id">Identifier.</param>
-        public GROUP_POOLGROUP GetGroupInfo(int id){
+        public GROUP_POOLGROUP GroupGetInfo(int id){
             GROUP_POOLGROUP result = null;
             XmlRpcGroupManagement xrum = XmlRpcProxyGen.Create<XmlRpcGroupManagement>();
             Array openNebulaReturnArr = xrum.oneGroupInfo(this.SessionSHA, id);
@@ -58,7 +51,7 @@ namespace Terradue.OpenNebula {
         /// <param name="groupId">Group identifier.</param>
         /// <param name="templateContent">Template content.</param>
         /// <param name="type">Type.</param>
-        public bool UpdateGroup(int groupId, string templateContent, int type){
+        public bool GroupUpdate(int groupId, string templateContent, int type){
             bool result = false;
             XmlRpcGroupManagement xrum = XmlRpcProxyGen.Create<XmlRpcGroupManagement>();
             Array openNebulaReturnArr = xrum.oneGroupUpdate(this.SessionSHA, groupId, templateContent, type);
@@ -72,7 +65,7 @@ namespace Terradue.OpenNebula {
         /// <returns><c>true</c>, if group quota was set, <c>false</c> otherwise.</returns>
         /// <param name="groupId">Group identifier.</param>
         /// <param name="templateContent">Template content.</param>
-        public bool SetGroupQuota(int groupId, string templateContent){
+        public bool GroupSetQuota(int groupId, string templateContent){
             bool result = false;
             XmlRpcGroupManagement xrum = XmlRpcProxyGen.Create<XmlRpcGroupManagement>();
             Array openNebulaReturnArr = xrum.oneGroupQuota(this.SessionSHA, groupId, templateContent);
@@ -87,7 +80,7 @@ namespace Terradue.OpenNebula {
         /// <param name="groupId">Group identifier.</param>
         /// <param name="zoneId">Zone identifier.</param>
         /// <param name="clusterId">Cluster identifier.</param>
-        public bool AddProviderToGroup(int groupId, int zoneId, int clusterId){
+        public bool GroupAddProvider(int groupId, int zoneId, int clusterId){
             bool result = false;
             XmlRpcGroupManagement xrum = XmlRpcProxyGen.Create<XmlRpcGroupManagement>();
             Array openNebulaReturnArr = xrum.oneGroupAddProvider(this.SessionSHA, groupId, zoneId, clusterId);
@@ -102,7 +95,7 @@ namespace Terradue.OpenNebula {
         /// <param name="groupId">Group identifier.</param>
         /// <param name="zoneId">Zone identifier.</param>
         /// <param name="clusterId">Cluster identifier.</param>
-        public bool DeleteProviderFromGroup(int groupId, int zoneId, int clusterId){
+        public bool GroupDeleteProvider(int groupId, int zoneId, int clusterId){
             bool result = false;
             XmlRpcGroupManagement xrum = XmlRpcProxyGen.Create<XmlRpcGroupManagement>();
             Array openNebulaReturnArr = xrum.oneGroupDeleteProvider(this.SessionSHA, groupId, zoneId, clusterId);
@@ -114,7 +107,7 @@ namespace Terradue.OpenNebula {
         /// Gets the group list info.
         /// </summary>
         /// <returns>The group list info.</returns>
-        public GROUP_POOL GetGroupListInfo(){
+        public GROUP_POOL GroupGetPoolInfo(){
             GROUP_POOL result = null;
             XmlRpcGroupManagement xrum = XmlRpcProxyGen.Create<XmlRpcGroupManagement>();
             Array openNebulaReturnArr = xrum.oneGroupPoolInfo(this.SessionSHA);
@@ -126,7 +119,7 @@ namespace Terradue.OpenNebula {
         /// Gets the default group quota info.
         /// </summary>
         /// <returns>The default group quota info.</returns>
-        public GROUP_POOLQUOTAS GetDefaultGroupQuotaInfo(){
+        public GROUP_POOLQUOTAS GroupGetDefaultQuotaInfo(){
             GROUP_POOLQUOTAS result = null;
             XmlRpcGroupManagement xrum = XmlRpcProxyGen.Create<XmlRpcGroupManagement>();
             Array openNebulaReturnArr = xrum.oneGroupQuotaInfo(this.SessionSHA);
@@ -139,7 +132,7 @@ namespace Terradue.OpenNebula {
         /// </summary>
         /// <returns>The default group quota info.</returns>
         /// <param name="contentTemplate">Content template.</param>
-        public GROUP_POOLQUOTAS UpdateDefaultGroupQuotaInfo(string contentTemplate){
+        public GROUP_POOLQUOTAS GroupUpdateDefaultQuotaInfo(string contentTemplate){
             GROUP_POOLQUOTAS result = null;
             XmlRpcGroupManagement xrum = XmlRpcProxyGen.Create<XmlRpcGroupManagement>();
             Array openNebulaReturnArr = xrum.oneGroupQuotaUpdate(this.SessionSHA, contentTemplate);

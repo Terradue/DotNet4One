@@ -1,12 +1,6 @@
 ﻿using System;
 using CookComputing.XmlRpc;
 
-
-    /*
-     * Inspired from OpenNebula-CSharp-Adapter (https://github.com/Neuralab/OpenNebula-CSharp-Adapter)
-    */
-
-
 namespace Terradue.OpenNebula {
 
     [XmlRpcUrl(Terradue.OpenNebula.Configuration.XMLRPC_SERVER)]

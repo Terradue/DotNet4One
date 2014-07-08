@@ -56,22 +56,22 @@
     <Compile Include="Terradue\OpenNebula\XmlRpc\XmlRpcTemplateManagement.cs" />
     <Compile Include="Terradue\OpenNebula\XmlRpc\XmlRpcVirtualMachineManagement.cs" />
     <Compile Include="Terradue\OpenNebula\XmlRpc\XmlRpcVirtualNetworkManagement.cs" />
-    <Compile Include="Terradue\OpenNebula\OneUserClient.cs" />
     <Compile Include="Terradue\OpenNebula\OneClient.cs" />
-    <Compile Include="Terradue\OpenNebula\OneTemplateClient.cs" />
-    <Compile Include="Terradue\OpenNebula\OneVirtualMachineClient.cs" />
-    <Compile Include="Terradue\OpenNebula\OneVirtualNetworkClient.cs" />
-    <Compile Include="Terradue\OpenNebula\OneImageClient.cs" />
     <Compile Include="Terradue\OpenNebula\XmlRpc\XmlRpcHostManagement.cs" />
-    <Compile Include="Terradue\OpenNebula\OneHostClient.cs" />
-    <Compile Include="Terradue\OpenNebula\OneClusterClient.cs" />
     <Compile Include="Terradue\OpenNebula\XmlRpc\XmlRpcClusterManagement.cs" />
     <Compile Include="Terradue\OpenNebula\XmlRpc\XmlRpcGroupManagement.cs" />
-    <Compile Include="Terradue\OpenNebula\OneGroupClient.cs" />
     <Compile Include="Terradue\OpenNebula\XmlRpc\XmlRpcDatastoreManagement.cs" />
-    <Compile Include="Terradue\OpenNebula\OneDatastoreClient.cs" />
     <Compile Include="Terradue\OpenNebula\XmlRpc\XmlRpcZoneManagement.cs" />
-    <Compile Include="Terradue\OpenNebula\OneZoneClient.cs" />
+    <Compile Include="Terradue\OpenNebula\OneClient.Cluster.cs" />
+    <Compile Include="Terradue\OpenNebula\OneClient.Datastore.cs" />
+    <Compile Include="Terradue\OpenNebula\OneClient.Group.cs" />
+    <Compile Include="Terradue\OpenNebula\OneClient.Host.cs" />
+    <Compile Include="Terradue\OpenNebula\OneClient.Image.cs" />
+    <Compile Include="Terradue\OpenNebula\OneClient.Template.cs" />
+    <Compile Include="Terradue\OpenNebula\OneClient.User.cs" />
+    <Compile Include="Terradue\OpenNebula\OneClient.VM.cs" />
+    <Compile Include="Terradue\OpenNebula\OneClient.VNet.cs" />
+    <Compile Include="Terradue\OpenNebula\OneClient.Zone.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

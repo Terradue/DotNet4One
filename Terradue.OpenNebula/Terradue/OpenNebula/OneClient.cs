@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace Terradue.OpenNebula {
-    public abstract class OneClient {
+    public partial class OneClient {
         /// <summary>
         /// Gets or sets the admin username.
         /// </summary>
@@ -40,7 +40,7 @@ namespace Terradue.OpenNebula {
         /// <returns>The response.</returns>
         /// <param name="type">Type.</param>
         /// <param name="response">Response.</param>
-        protected object Deserialize(Type type, string response){
+        private object Deserialize(Type type, string response){
             object result = null;
 
             System.Xml.Serialization.XmlSerializer ser = new System.Xml.Serialization.XmlSerializer(type);
@@ -52,5 +52,6 @@ namespace Terradue.OpenNebula {
         }
 
     }
+
 }
 

@@ -3,21 +3,14 @@ using CookComputing.XmlRpc;
 
 namespace Terradue.OpenNebula {
 
-    public class OneZoneClient : OneClient {
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Terradue.OpenNebula.OneZoneClient"/> class.
-        /// </summary>
-        /// <param name="adminUsername">Admin username.</param>
-        /// <param name="adminPassword">Admin password.</param>
-        public OneZoneClient(string adminUsername, string adminPassword) : base(adminUsername, adminPassword){}
-       
+    public partial class OneClient {
+               
         /// <summary>
         /// Allocates the zone.
         /// </summary>
         /// <returns>The zone.</returns>
         /// <param name="zonename">Zonename.</param>
-        public int AllocateZone(string zonename){
+        public int ZoneAllocate(string zonename){
             int result = 0;
             XmlRpcZoneManagement xrum = XmlRpcProxyGen.Create<XmlRpcZoneManagement>();
             Array openNebulaReturnArr = xrum.oneZoneAllocate(this.SessionSHA, zonename);
@@ -30,7 +23,7 @@ namespace Terradue.OpenNebula {
         /// </summary>
         /// <returns><c>true</c>, if zone was deleted, <c>false</c> otherwise.</returns>
         /// <param name="zoneId">Zone identifier.</param>
-        public bool DeleteZone(int zoneId){
+        public bool ZoneDelete(int zoneId){
             bool result = false;
             XmlRpcZoneManagement xrum = XmlRpcProxyGen.Create<XmlRpcZoneManagement>();
             Array openNebulaReturnArr = xrum.oneZoneDelete(this.SessionSHA, zoneId);
@@ -43,7 +36,7 @@ namespace Terradue.OpenNebula {
         /// </summary>
         /// <returns><c>true</c>, if zone was updated, <c>false</c> otherwise.</returns>
         /// <param name="zoneId">Zone identifier.</param>
-        public bool UpdateZone(int zoneId, string template, int type){
+        public bool ZoneUpdate(int zoneId, string template, int type){
             bool result = false;
             XmlRpcZoneManagement xrum = XmlRpcProxyGen.Create<XmlRpcZoneManagement>();
             Array openNebulaReturnArr = xrum.oneZoneUpdate(this.SessionSHA, zoneId, template, type);
@@ -57,7 +50,7 @@ namespace Terradue.OpenNebula {
         /// <returns><c>true</c>, if zone was renamed, <c>false</c> otherwise.</returns>
         /// <param name="zoneId">Zone identifier.</param>
         /// <param name="newName">New name.</param>
-        public bool RenameZone(int zoneId, string newName){
+        public bool ZoneRename(int zoneId, string newName){
             bool result = false;
             XmlRpcZoneManagement xrum = XmlRpcProxyGen.Create<XmlRpcZoneManagement>();
             Array openNebulaReturnArr = xrum.oneZoneRename(this.SessionSHA, zoneId, newName);
@@ -70,7 +63,7 @@ namespace Terradue.OpenNebula {
         /// </summary>
         /// <returns>The zone info.</returns>
         /// <param name="zoneId">Zone identifier.</param>
-        public object GetZoneInfo(int zoneId){
+        public object ZoneGetInfo(int zoneId){
             throw new NotImplementedException("ZONE class not defined in XSD");
         }
 
@@ -78,7 +71,7 @@ namespace Terradue.OpenNebula {
         /// Gets the zone pool info.
         /// </summary>
         /// <returns>The zone pool info.</returns>
-        public object GetZoneListInfo(){
+        public object ZoneGetZonePoolInfo(){
             throw new NotImplementedException("ZONE class not defined in XSD");
         }
     }

@@ -3,21 +3,14 @@ using CookComputing.XmlRpc;
 
 namespace Terradue.OpenNebula {
 
-    public class OneTemplateClient : OneClient {
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Terradue.OpenNebula.OneTemplateClient"/> class.
-        /// </summary>
-        /// <param name="adminUsername">Admin username.</param>
-        /// <param name="adminPassword">Admin password.</param>
-        public OneTemplateClient(string adminUsername, string adminPassword) : base(adminUsername, adminPassword){}
+    public partial class OneClient {
 
         /// <summary>
         /// Allocates the template.
         /// </summary>
         /// <returns>The template ID.</returns>
         /// <param name="content">Content.</param>
-        public int AllocateTemplate(string content){
+        public int TemplateAllocate(string content){
             int result = 0;
             XmlRpcTemplateManagement xrum = XmlRpcProxyGen.Create<XmlRpcTemplateManagement>();
             Array openNebulaReturnArr = xrum.oneTemplateAllocate(this.SessionSHA, content);
@@ -31,7 +24,7 @@ namespace Terradue.OpenNebula {
         /// <returns><c>true</c>, if template was cloned, <c>false</c> otherwise.</returns>
         /// <param name="id">Identifier of the template to clone.</param>
         /// <param name="name">Name of the new template.</param>
-        public int CloneTemplate(int id, string name){
+        public int TemplateClone(int id, string name){
             int result = 0;
             XmlRpcTemplateManagement xrum = XmlRpcProxyGen.Create<XmlRpcTemplateManagement>();
             Array openNebulaReturnArr = xrum.oneTemplateClone(this.SessionSHA, id, name);
@@ -44,7 +37,7 @@ namespace Terradue.OpenNebula {
         /// </summary>
         /// <returns><c>true</c>, if template was deleted, <c>false</c> otherwise.</returns>
         /// <param name="id">Identifier of the template.</param>
-        public bool DeleteTemplate(int id){
+        public bool TemplateDelete(int id){
             bool result = false;
             XmlRpcTemplateManagement xrum = XmlRpcProxyGen.Create<XmlRpcTemplateManagement>();
             Array openNebulaReturnArr = xrum.oneTemplateDelete(this.SessionSHA, id);
@@ -58,7 +51,7 @@ namespace Terradue.OpenNebula {
         /// <returns>The new VM id</returns>
         /// <param name="id">Identifier of the template.</param>
         /// <param name="templateName">New VM name.</param>
-        public int InstanciateVMFromTemplate(int id, string vmName){
+        public int TemplateInstanciateVM(int id, string vmName){
             int result = 0;
             XmlRpcTemplateManagement xrum = XmlRpcProxyGen.Create<XmlRpcTemplateManagement>();
             Array openNebulaReturnArr = xrum.oneTemplateInstantiate(this.SessionSHA, id, vmName);
@@ -72,7 +65,7 @@ namespace Terradue.OpenNebula {
         /// <returns><c>true</c>, if template was renamed, <c>false</c> otherwise.</returns>
         /// <param name="id">Identifier.</param>
         /// <param name="newName">New name.</param>
-        public bool RenameTemplate(int id, string newName){
+        public bool TemplateRename(int id, string newName){
             bool result = false;
             XmlRpcTemplateManagement xrum = XmlRpcProxyGen.Create<XmlRpcTemplateManagement>();
             Array openNebulaReturnArr = xrum.oneTemplateRename(this.SessionSHA, id, newName);
@@ -86,7 +79,7 @@ namespace Terradue.OpenNebula {
         /// <returns><c>true</c>, if template was updated, <c>false</c> otherwise.</returns>
         /// <param name="id">Identifier.</param>
         /// <param name="newContent">New content.</param>
-        public bool UpdateTemplate(int id, string newContent){
+        public bool TemplateUpdate(int id, string newContent){
             bool result = false;
             XmlRpcTemplateManagement xrum = XmlRpcProxyGen.Create<XmlRpcTemplateManagement>();
             Array openNebulaReturnArr = xrum.oneTemplateUpdate(this.SessionSHA, id, newContent);
@@ -123,7 +116,7 @@ namespace Terradue.OpenNebula {
         /// <param name="id">Identifier.</param>
         /// <param name="usrId">Usr identifier.</param>
         /// <param name="grpId">Group identifier.</param>
-        public bool ChangeTemplateOwner(int id, int usrId, int grpId){
+        public bool TemplateChangeOwner(int id, int usrId, int grpId){
             bool result = false;
             XmlRpcTemplateManagement xrum = XmlRpcProxyGen.Create<XmlRpcTemplateManagement>();
             Array openNebulaReturnArr = xrum.oneTemplateChangeOwner(this.SessionSHA, id, usrId, grpId);
@@ -136,7 +129,7 @@ namespace Terradue.OpenNebula {
         /// </summary>
         /// <returns><c>true</c>, if template info was gotten, <c>false</c> otherwise.</returns>
         /// <param name="id">Identifier.</param>
-        public VMTEMPLATE GetTemplateInfo(int id){
+        public VMTEMPLATE TemplateGetInfo(int id){
             VMTEMPLATE result = null;
             XmlRpcTemplateManagement xrum = XmlRpcProxyGen.Create<XmlRpcTemplateManagement>();
             Array openNebulaReturnArr = xrum.oneTemplateInfo(this.SessionSHA, id);
@@ -151,7 +144,7 @@ namespace Terradue.OpenNebula {
         /// <param name="templateFilterFlag">Template filter flag.</param>
         /// <param name="rangeStartId">Range start identifier.</param>
         /// <param name="rangeEndId">Range end identifier.</param>
-        public VMTEMPLATE_POOL GetTemplateListInfo(int templateFilterFlag, int rangeStartId, int rangeEndId){
+        public VMTEMPLATE_POOL TemplateGetPoolInfo(int templateFilterFlag, int rangeStartId, int rangeEndId){
             VMTEMPLATE_POOL result = null;
             XmlRpcTemplateManagement xrum = XmlRpcProxyGen.Create<XmlRpcTemplateManagement>();
             Array openNebulaReturnArr = xrum.oneTemplatePoolInfo(this.SessionSHA, templateFilterFlag, rangeStartId, rangeEndId);

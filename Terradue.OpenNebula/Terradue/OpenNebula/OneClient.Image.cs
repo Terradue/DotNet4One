@@ -3,14 +3,7 @@ using CookComputing.XmlRpc;
 
 namespace Terradue.OpenNebula {
 
-    public class OneImageClient : OneClient {
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Terradue.OpenNebula.OneImageClient"/> class.
-        /// </summary>
-        /// <param name="adminUsername">Admin username.</param>
-        /// <param name="adminPassword">Admin password.</param>
-        public OneImageClient(string adminUsername, string adminPassword) : base(adminUsername, adminPassword){}
+    public partial class OneClient {
 
         /// <summary>
         /// Allocates the image.
@@ -18,7 +11,7 @@ namespace Terradue.OpenNebula {
         /// <returns>The image.</returns>
         /// <param name="atributeValueTemplate">Atribute value template.</param>
         /// <param name="dataStoreId">Data store identifier.</param>
-        public int AllocateImage(string atributeValueTemplate, int dataStoreId){
+        public int ImageAllocate(string atributeValueTemplate, int dataStoreId){
             int result = 0;
             XmlRpcImageManagement xrum = XmlRpcProxyGen.Create<XmlRpcImageManagement>();
             Array openNebulaReturnArr = xrum.oneImageAllocate(this.SessionSHA, atributeValueTemplate, dataStoreId);
@@ -32,7 +25,7 @@ namespace Terradue.OpenNebula {
         /// <returns>The image.</returns>
         /// <param name="id">Identifier.</param>
         /// <param name="name">Name.</param>
-        public int CloneImage(int id, string name){
+        public int ImageClone(int id, string name){
             int result = 0;
             XmlRpcImageManagement xrum = XmlRpcProxyGen.Create<XmlRpcImageManagement>();
             Array openNebulaReturnArr = xrum.oneImageClone(this.SessionSHA, id, name);
@@ -45,7 +38,7 @@ namespace Terradue.OpenNebula {
         /// </summary>
         /// <returns><c>true</c>, if image was deleted, <c>false</c> otherwise.</returns>
         /// <param name="id">Identifier.</param>
-        public bool DeleteImage(int id){
+        public bool ImageDelete(int id){
             bool result = false;
             XmlRpcImageManagement xrum = XmlRpcProxyGen.Create<XmlRpcImageManagement>();
             Array openNebulaReturnArr = xrum.oneImageDelete(this.SessionSHA, id);
@@ -58,7 +51,7 @@ namespace Terradue.OpenNebula {
         /// </summary>
         /// <returns><c>true</c>, if image was enabled, <c>false</c> otherwise.</returns>
         /// <param name="id">Identifier.</param>
-        public bool EnableImage(int id, bool enable){
+        public bool ImageEnable(int id, bool enable){
             bool result = false;
             XmlRpcImageManagement xrum = XmlRpcProxyGen.Create<XmlRpcImageManagement>();
             Array openNebulaReturnArr = xrum.oneImageEnable(this.SessionSHA, id, enable);
@@ -72,7 +65,7 @@ namespace Terradue.OpenNebula {
         /// <returns><c>true</c>, if persistent image was made, <c>false</c> otherwise.</returns>
         /// <param name="id">Identifier.</param>
         /// <param name="persistent">If set to <c>true</c> persistent.</param>
-        public bool MakePersistentImage(int id, bool persistent){
+        public bool ImageMakePersistent(int id, bool persistent){
             bool result = false;
             XmlRpcImageManagement xrum = XmlRpcProxyGen.Create<XmlRpcImageManagement>();
             Array openNebulaReturnArr = xrum.oneImagePersistent(this.SessionSHA, id, persistent);
@@ -86,7 +79,7 @@ namespace Terradue.OpenNebula {
         /// <returns><c>true</c>, if image type was changed, <c>false</c> otherwise.</returns>
         /// <param name="id">Identifier.</param>
         /// <param name="imageType">Image type.</param>
-        public bool ChangeImageType(int id, string imageType){
+        public bool ImageChangeType(int id, string imageType){
             bool result = false;
             XmlRpcImageManagement xrum = XmlRpcProxyGen.Create<XmlRpcImageManagement>();
             Array openNebulaReturnArr = xrum.oneImageChangeType(this.SessionSHA, id, imageType);
@@ -100,7 +93,7 @@ namespace Terradue.OpenNebula {
         /// <returns><c>true</c>, if image was updated, <c>false</c> otherwise.</returns>
         /// <param name="id">Identifier.</param>
         /// <param name="newImageTemplate">New image template.</param>
-        public bool UpdateImage(int id, string newImageTemplate){
+        public bool ImageUpdate(int id, string newImageTemplate){
             bool result = false;
             XmlRpcImageManagement xrum = XmlRpcProxyGen.Create<XmlRpcImageManagement>();
             Array openNebulaReturnArr = xrum.oneImageUpdate(this.SessionSHA, id, newImageTemplate);
@@ -152,7 +145,7 @@ namespace Terradue.OpenNebula {
         /// <returns><c>true</c>, if image was renamed, <c>false</c> otherwise.</returns>
         /// <param name="id">Identifier.</param>
         /// <param name="newName">New name.</param>
-        public bool RenameImage(int id, string newName){
+        public bool ImageRename(int id, string newName){
             bool result = false;
             XmlRpcImageManagement xrum = XmlRpcProxyGen.Create<XmlRpcImageManagement>();
             Array openNebulaReturnArr = xrum.oneImageRename(this.SessionSHA, id, newName);
@@ -165,7 +158,7 @@ namespace Terradue.OpenNebula {
         /// </summary>
         /// <returns>The image info.</returns>
         /// <param name="id">Identifier.</param>
-        public IMAGE GetImageInfo(int id){
+        public IMAGE ImageGetInfo(int id){
             IMAGE result = null;
             XmlRpcImageManagement xrum = XmlRpcProxyGen.Create<XmlRpcImageManagement>();
             Array openNebulaReturnArr = xrum.oneImageInfo(this.SessionSHA, id);
@@ -182,7 +175,7 @@ namespace Terradue.OpenNebula {
         /// <param name="rangeStartId">Range start identifier.</param>
         /// <param name="rangeEndId">Range end identifier.</param>
         /// <param name="vmState">Vm state.</param>
-        public IMAGE_POOL GetImageListInfo(int imageFilterFlag, int rangeStartId, int rangeEndId){
+        public IMAGE_POOL ImageGetPoolInfo(int imageFilterFlag, int rangeStartId, int rangeEndId){
             IMAGE_POOL result = null;
             XmlRpcImageManagement xrum = XmlRpcProxyGen.Create<XmlRpcImageManagement>();
             Array openNebulaReturnArr = xrum.oneImagePoolInfo(this.SessionSHA, imageFilterFlag, rangeStartId, rangeEndId);
