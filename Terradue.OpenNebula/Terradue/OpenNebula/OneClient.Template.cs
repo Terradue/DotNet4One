@@ -12,7 +12,7 @@ namespace Terradue.OpenNebula {
         /// <param name="content">Content.</param>
         public int TemplateAllocate(string content){
             int result = 0;
-            XmlRpcTemplateManagement xrum = XmlRpcProxyGen.Create<XmlRpcTemplateManagement>();
+            XmlRpcTemplateManagement xrum = (XmlRpcTemplateManagement)GetProxy(typeof(XmlRpcTemplateManagement));
             Array openNebulaReturnArr = xrum.oneTemplateAllocate(this.SessionSHA, content);
             result = (int)openNebulaReturnArr.GetValue(1);
             return result;
@@ -26,7 +26,7 @@ namespace Terradue.OpenNebula {
         /// <param name="name">Name of the new template.</param>
         public int TemplateClone(int id, string name){
             int result = 0;
-            XmlRpcTemplateManagement xrum = XmlRpcProxyGen.Create<XmlRpcTemplateManagement>();
+            XmlRpcTemplateManagement xrum = (XmlRpcTemplateManagement)GetProxy(typeof(XmlRpcTemplateManagement));
             Array openNebulaReturnArr = xrum.oneTemplateClone(this.SessionSHA, id, name);
             result = (int)openNebulaReturnArr.GetValue(1);
             return result;
@@ -39,7 +39,7 @@ namespace Terradue.OpenNebula {
         /// <param name="id">Identifier of the template.</param>
         public bool TemplateDelete(int id){
             bool result = false;
-            XmlRpcTemplateManagement xrum = XmlRpcProxyGen.Create<XmlRpcTemplateManagement>();
+            XmlRpcTemplateManagement xrum = (XmlRpcTemplateManagement)GetProxy(typeof(XmlRpcTemplateManagement));
             Array openNebulaReturnArr = xrum.oneTemplateDelete(this.SessionSHA, id);
             result = (bool)openNebulaReturnArr.GetValue(0);
             return result;
@@ -53,7 +53,7 @@ namespace Terradue.OpenNebula {
         /// <param name="templateName">New VM name.</param>
         public int TemplateInstanciateVM(int id, string vmName){
             int result = 0;
-            XmlRpcTemplateManagement xrum = XmlRpcProxyGen.Create<XmlRpcTemplateManagement>();
+            XmlRpcTemplateManagement xrum = (XmlRpcTemplateManagement)GetProxy(typeof(XmlRpcTemplateManagement));
             Array openNebulaReturnArr = xrum.oneTemplateInstantiate(this.SessionSHA, id, vmName);
             result = (int)openNebulaReturnArr.GetValue(1);
             return result;
@@ -67,7 +67,7 @@ namespace Terradue.OpenNebula {
         /// <param name="newName">New name.</param>
         public bool TemplateRename(int id, string newName){
             bool result = false;
-            XmlRpcTemplateManagement xrum = XmlRpcProxyGen.Create<XmlRpcTemplateManagement>();
+            XmlRpcTemplateManagement xrum = (XmlRpcTemplateManagement)GetProxy(typeof(XmlRpcTemplateManagement));
             Array openNebulaReturnArr = xrum.oneTemplateRename(this.SessionSHA, id, newName);
             result = (bool)openNebulaReturnArr.GetValue(0);
             return result;
@@ -81,7 +81,7 @@ namespace Terradue.OpenNebula {
         /// <param name="newContent">New content.</param>
         public bool TemplateUpdate(int id, string newContent){
             bool result = false;
-            XmlRpcTemplateManagement xrum = XmlRpcProxyGen.Create<XmlRpcTemplateManagement>();
+            XmlRpcTemplateManagement xrum = (XmlRpcTemplateManagement)GetProxy(typeof(XmlRpcTemplateManagement));
             Array openNebulaReturnArr = xrum.oneTemplateUpdate(this.SessionSHA, id, newContent);
             result = (bool)openNebulaReturnArr.GetValue(0);
             return result;
@@ -103,7 +103,7 @@ namespace Terradue.OpenNebula {
         /// <param name="otherAdmin">Other admin.</param>
         public bool TemplateChmod(int id, int userUse, int userManage, int userAdmin, int groupUse, int groupManage, int groupAdmin, int otherUse, int otherManage, int otherAdmin){
             bool result = false;
-            XmlRpcTemplateManagement xrum = XmlRpcProxyGen.Create<XmlRpcTemplateManagement>();
+            XmlRpcTemplateManagement xrum = (XmlRpcTemplateManagement)GetProxy(typeof(XmlRpcTemplateManagement));
             Array openNebulaReturnArr = xrum.oneTemplateChangeMod(this.SessionSHA, id, userUse, userManage, userAdmin, groupUse, groupManage, groupAdmin, otherUse, otherManage, otherAdmin);
             result = (bool)openNebulaReturnArr.GetValue(0);
             return result;
@@ -118,7 +118,7 @@ namespace Terradue.OpenNebula {
         /// <param name="grpId">Group identifier.</param>
         public bool TemplateChangeOwner(int id, int usrId, int grpId){
             bool result = false;
-            XmlRpcTemplateManagement xrum = XmlRpcProxyGen.Create<XmlRpcTemplateManagement>();
+            XmlRpcTemplateManagement xrum = (XmlRpcTemplateManagement)GetProxy(typeof(XmlRpcTemplateManagement));
             Array openNebulaReturnArr = xrum.oneTemplateChangeOwner(this.SessionSHA, id, usrId, grpId);
             result = (bool)openNebulaReturnArr.GetValue(0);
             return result;
@@ -131,7 +131,7 @@ namespace Terradue.OpenNebula {
         /// <param name="id">Identifier.</param>
         public VMTEMPLATE TemplateGetInfo(int id){
             VMTEMPLATE result = null;
-            XmlRpcTemplateManagement xrum = XmlRpcProxyGen.Create<XmlRpcTemplateManagement>();
+            XmlRpcTemplateManagement xrum = (XmlRpcTemplateManagement)GetProxy(typeof(XmlRpcTemplateManagement));
             Array openNebulaReturnArr = xrum.oneTemplateInfo(this.SessionSHA, id);
             result = (VMTEMPLATE)Deserialize(typeof(VMTEMPLATE), openNebulaReturnArr.GetValue(1).ToString());
             return result;
@@ -146,7 +146,7 @@ namespace Terradue.OpenNebula {
         /// <param name="rangeEndId">Range end identifier.</param>
         public VMTEMPLATE_POOL TemplateGetPoolInfo(int templateFilterFlag, int rangeStartId, int rangeEndId){
             VMTEMPLATE_POOL result = null;
-            XmlRpcTemplateManagement xrum = XmlRpcProxyGen.Create<XmlRpcTemplateManagement>();
+            XmlRpcTemplateManagement xrum = (XmlRpcTemplateManagement)GetProxy(typeof(XmlRpcTemplateManagement));
             Array openNebulaReturnArr = xrum.oneTemplatePoolInfo(this.SessionSHA, templateFilterFlag, rangeStartId, rangeEndId);
             result = (VMTEMPLATE_POOL)Deserialize(typeof(VMTEMPLATE_POOL), openNebulaReturnArr.GetValue(1).ToString());
             return result;

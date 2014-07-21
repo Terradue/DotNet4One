@@ -13,7 +13,7 @@ namespace Terradue.OpenNebula {
         /// <param name="template">Template for the VM.</param>
         public int VMAllocate(string template){
             int result = 0;
-            XmlRpcVirtualMachineManagement xrum = XmlRpcProxyGen.Create<XmlRpcVirtualMachineManagement>();
+            XmlRpcVirtualMachineManagement xrum = (XmlRpcVirtualMachineManagement)GetProxy(typeof(XmlRpcVirtualMachineManagement));
             Array openNebulaReturnArr = xrum.oneVirtualMachineAllocate(this.SessionSHA, template);
             result = (int)openNebulaReturnArr.GetValue(1);
             return result;
@@ -27,7 +27,7 @@ namespace Terradue.OpenNebula {
         /// <param name="hostId">Host identifier.</param>
         public bool VMDeploy(int id, int hostId){
             bool result = false;
-            XmlRpcVirtualMachineManagement xrum = XmlRpcProxyGen.Create<XmlRpcVirtualMachineManagement>();
+            XmlRpcVirtualMachineManagement xrum = (XmlRpcVirtualMachineManagement)GetProxy(typeof(XmlRpcVirtualMachineManagement));
             Array openNebulaReturnArr = xrum.oneVirtualMachineDeploy(this.SessionSHA, id, hostId);
             result = (bool)openNebulaReturnArr.GetValue(0);
             return result;
@@ -41,7 +41,7 @@ namespace Terradue.OpenNebula {
         /// <param name="action">Action.</param>
         public bool VMAction(int id, string action){
             bool result = false;
-            XmlRpcVirtualMachineManagement xrum = XmlRpcProxyGen.Create<XmlRpcVirtualMachineManagement>();
+            XmlRpcVirtualMachineManagement xrum = (XmlRpcVirtualMachineManagement)GetProxy(typeof(XmlRpcVirtualMachineManagement));
             Array openNebulaReturnArr = xrum.oneVirtualMachineAction(this.SessionSHA, action, id);
             result = (bool)openNebulaReturnArr.GetValue(0);
             return result;
@@ -55,7 +55,7 @@ namespace Terradue.OpenNebula {
         /// <param name="targetId">Target identifier.</param>
         public bool VMMigrate(int id, int targetId){
             bool result = false;
-            XmlRpcVirtualMachineManagement xrum = XmlRpcProxyGen.Create<XmlRpcVirtualMachineManagement>();
+            XmlRpcVirtualMachineManagement xrum = (XmlRpcVirtualMachineManagement)GetProxy(typeof(XmlRpcVirtualMachineManagement));
             Array openNebulaReturnArr = xrum.oneVirtualMachineMigrate(this.SessionSHA, id, targetId);
             result = (bool)openNebulaReturnArr.GetValue(0);
             return result;
@@ -71,7 +71,7 @@ namespace Terradue.OpenNebula {
         /// <param name="newImageType">New image type.</param>
         public int VMSaveDisks(int id, int diskId, string newImageName, string newImageType){
             int result = 0;
-            XmlRpcVirtualMachineManagement xrum = XmlRpcProxyGen.Create<XmlRpcVirtualMachineManagement>();
+            XmlRpcVirtualMachineManagement xrum = (XmlRpcVirtualMachineManagement)GetProxy(typeof(XmlRpcVirtualMachineManagement));
             Array openNebulaReturnArr = xrum.oneVirtualMachineSaveDisk(this.SessionSHA, id, diskId, newImageName, newImageType);
             result = (int)openNebulaReturnArr.GetValue(1);
             return result;
@@ -85,7 +85,7 @@ namespace Terradue.OpenNebula {
         /// <param name="attributeValueSingleDiskVector">Attribute value single disk vector.</param>
         public bool VMAttachDisk(int id, string attributeValueSingleDiskVector){
             bool result = false;
-            XmlRpcVirtualMachineManagement xrum = XmlRpcProxyGen.Create<XmlRpcVirtualMachineManagement>();
+            XmlRpcVirtualMachineManagement xrum = (XmlRpcVirtualMachineManagement)GetProxy(typeof(XmlRpcVirtualMachineManagement));
             Array openNebulaReturnArr = xrum.oneVirtualMachineAttach(this.SessionSHA, id, attributeValueSingleDiskVector);
             result = (bool)openNebulaReturnArr.GetValue(0);
             return result;
@@ -99,7 +99,7 @@ namespace Terradue.OpenNebula {
         /// <param name="diskId">Disk identifier.</param>
         public bool VMDetachDisk(int id, int diskId){
             bool result = false;
-            XmlRpcVirtualMachineManagement xrum = XmlRpcProxyGen.Create<XmlRpcVirtualMachineManagement>();
+            XmlRpcVirtualMachineManagement xrum = (XmlRpcVirtualMachineManagement)GetProxy(typeof(XmlRpcVirtualMachineManagement));
             Array openNebulaReturnArr = xrum.oneVirtualMachineDetach(this.SessionSHA, id, diskId);
             result = (bool)openNebulaReturnArr.GetValue(0);
             return result;
@@ -121,7 +121,7 @@ namespace Terradue.OpenNebula {
         /// <param name="otherAdmin">Other admin.</param>
         public bool VMChangeMod(int id, int userUse, int userManage, int userAdmin, int groupUse, int groupManage, int groupAdmin, int otherUse, int otherManage, int otherAdmin){
             bool result = false;
-            XmlRpcVirtualMachineManagement xrum = XmlRpcProxyGen.Create<XmlRpcVirtualMachineManagement>();
+            XmlRpcVirtualMachineManagement xrum = (XmlRpcVirtualMachineManagement)GetProxy(typeof(XmlRpcVirtualMachineManagement));
             Array openNebulaReturnArr = xrum.oneVirtualMachineChangeMod(this.SessionSHA, id, userUse, userManage, userAdmin, groupUse, groupManage, groupAdmin, otherUse, otherManage, otherAdmin);
             result = (bool)openNebulaReturnArr.GetValue(0);
             return result;
@@ -136,7 +136,7 @@ namespace Terradue.OpenNebula {
         /// <param name="newGroupId">New group identifier.</param>
         public bool VMChangeOwner(int id, int newUserID, int newGroupId){
             bool result = false;
-            XmlRpcVirtualMachineManagement xrum = XmlRpcProxyGen.Create<XmlRpcVirtualMachineManagement>();
+            XmlRpcVirtualMachineManagement xrum = (XmlRpcVirtualMachineManagement)GetProxy(typeof(XmlRpcVirtualMachineManagement));
             Array openNebulaReturnArr = xrum.oneVirtualMachineChangeOwner(this.SessionSHA, id, newUserID, newGroupId);
             result = (bool)openNebulaReturnArr.GetValue(0);
             return result;
@@ -150,7 +150,7 @@ namespace Terradue.OpenNebula {
         /// <param name="newName">New name.</param>
         public bool VMRename(int id, string newName){
             bool result = false;
-            XmlRpcVirtualMachineManagement xrum = XmlRpcProxyGen.Create<XmlRpcVirtualMachineManagement>();
+            XmlRpcVirtualMachineManagement xrum = (XmlRpcVirtualMachineManagement)GetProxy(typeof(XmlRpcVirtualMachineManagement));
             Array openNebulaReturnArr = xrum.oneVirtualMachineRename(this.SessionSHA, id, newName);
             result = (bool)openNebulaReturnArr.GetValue(0);
             return result;
@@ -163,7 +163,7 @@ namespace Terradue.OpenNebula {
         /// <param name="id">Identifier.</param>
         public VM VMGetInfo(int id){
             VM result = null;
-            XmlRpcVirtualMachineManagement xrum = XmlRpcProxyGen.Create<XmlRpcVirtualMachineManagement>();
+            XmlRpcVirtualMachineManagement xrum = (XmlRpcVirtualMachineManagement)GetProxy(typeof(XmlRpcVirtualMachineManagement));
             Array openNebulaReturnArr = xrum.oneVirtualMachineInfo(this.SessionSHA, id);
             result = (VM)Deserialize(typeof(VM), openNebulaReturnArr.GetValue(1).ToString());
             return result;
@@ -180,7 +180,7 @@ namespace Terradue.OpenNebula {
         /// <param name="vmState">Vm state.</param>
         public VM_POOL VMGetPoolInfo(int templateFilterFlag, int rangeStartId, int rangeEndId, int vmState){
             VM_POOL result = null;
-            XmlRpcVirtualMachineManagement xrum = XmlRpcProxyGen.Create<XmlRpcVirtualMachineManagement>();
+            XmlRpcVirtualMachineManagement xrum = (XmlRpcVirtualMachineManagement)GetProxy(typeof(XmlRpcVirtualMachineManagement));
             Array openNebulaReturnArr = xrum.oneVirtualMachinePoolInfo(this.SessionSHA, templateFilterFlag, rangeStartId, rangeEndId, vmState);
             result = (VM_POOL)Deserialize(typeof(VM_POOL), openNebulaReturnArr.GetValue(1).ToString());
             return result;
@@ -193,7 +193,7 @@ namespace Terradue.OpenNebula {
         /// <param name="id">Identifier.</param>
         public VM_POOL VMGetMonitoringInfo(int id){
             VM_POOL result = null;
-            XmlRpcVirtualMachineManagement xrum = XmlRpcProxyGen.Create<XmlRpcVirtualMachineManagement>();
+            XmlRpcVirtualMachineManagement xrum = (XmlRpcVirtualMachineManagement)GetProxy(typeof(XmlRpcVirtualMachineManagement));
             Array openNebulaReturnArr = xrum.oneVirtualMachineMonitoring(this.SessionSHA, id);
             result = (VM_POOL)Deserialize(typeof(VM_POOL), openNebulaReturnArr.GetValue(1).ToString());
             return result;
@@ -206,7 +206,7 @@ namespace Terradue.OpenNebula {
         /// <param name="vmFilterFlag">Vm filter flag.</param>
         public VM_POOL VMGetPoolMonitoringInfo(int vmFilterFlag){
             VM_POOL result = null;
-            XmlRpcVirtualMachineManagement xrum = XmlRpcProxyGen.Create<XmlRpcVirtualMachineManagement>();
+            XmlRpcVirtualMachineManagement xrum = (XmlRpcVirtualMachineManagement)GetProxy(typeof(XmlRpcVirtualMachineManagement));
             Array openNebulaReturnArr = xrum.oneVirtualMachinePoolMonitoring(this.SessionSHA, vmFilterFlag);
             result = (VM_POOL)Deserialize(typeof(VM_POOL), openNebulaReturnArr.GetValue(1).ToString());
             return result;
@@ -221,7 +221,7 @@ namespace Terradue.OpenNebula {
         /// <param name="endTime">End time.</param>
         public VMHISTORY_RECORDSHISTORY VMGetListHistory(int vmFilterFlag, int startTime, int endTime){
             VMHISTORY_RECORDSHISTORY result = null;
-            XmlRpcVirtualMachineManagement xrum = XmlRpcProxyGen.Create<XmlRpcVirtualMachineManagement>();
+            XmlRpcVirtualMachineManagement xrum = (XmlRpcVirtualMachineManagement)GetProxy(typeof(XmlRpcVirtualMachineManagement));
             Array openNebulaReturnArr = xrum.oneVirtualMachinePoolAccounting(this.SessionSHA, vmFilterFlag, startTime, endTime);
             result = (VMHISTORY_RECORDSHISTORY)Deserialize(typeof(VMHISTORY_RECORDSHISTORY), openNebulaReturnArr.GetValue(1).ToString());
             return result;

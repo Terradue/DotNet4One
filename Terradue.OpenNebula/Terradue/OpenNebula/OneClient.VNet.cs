@@ -13,7 +13,7 @@ namespace Terradue.OpenNebula {
         /// <param name="leaseTemplate">Lease template.</param>
         public bool VNetAddLease(int id, string leaseTemplate){
             bool result = false;
-            XmlRpcVirtualNetworkManagement xrum = XmlRpcProxyGen.Create<XmlRpcVirtualNetworkManagement>();
+            XmlRpcVirtualNetworkManagement xrum = (XmlRpcVirtualNetworkManagement)GetProxy(typeof(XmlRpcVirtualNetworkManagement));
             Array openNebulaReturnArr = xrum.oneVirtualNetworkAddLeases(this.SessionSHA, id, leaseTemplate);
             result = (bool)openNebulaReturnArr.GetValue(0);
             return result;
@@ -27,7 +27,7 @@ namespace Terradue.OpenNebula {
         /// <param name="holdTemplate">Hold template.</param>
         public bool VNetHold(int id, string holdTemplate){
             bool result = false;
-            XmlRpcVirtualNetworkManagement xrum = XmlRpcProxyGen.Create<XmlRpcVirtualNetworkManagement>();
+            XmlRpcVirtualNetworkManagement xrum = (XmlRpcVirtualNetworkManagement)GetProxy(typeof(XmlRpcVirtualNetworkManagement));
             Array openNebulaReturnArr = xrum.oneVirtualNetworkHold(this.SessionSHA, id, holdTemplate);
             result = (bool)openNebulaReturnArr.GetValue(0);
             return result;
@@ -41,7 +41,7 @@ namespace Terradue.OpenNebula {
         /// <param name="releaseTemplate">Release template.</param>
         public bool VNetRelease(int id, string releaseTemplate){
             bool result = false;
-            XmlRpcVirtualNetworkManagement xrum = XmlRpcProxyGen.Create<XmlRpcVirtualNetworkManagement>();
+            XmlRpcVirtualNetworkManagement xrum = (XmlRpcVirtualNetworkManagement)GetProxy(typeof(XmlRpcVirtualNetworkManagement));
             Array openNebulaReturnArr = xrum.oneVirtualNetworkRelease(this.SessionSHA, id, releaseTemplate);
             result = (bool)openNebulaReturnArr.GetValue(0);
             return result;
@@ -54,7 +54,7 @@ namespace Terradue.OpenNebula {
         /// <param name="id">Identifier.</param>
         public VNET VNetGetInfo(int id){
             VNET result = null;
-            XmlRpcVirtualNetworkManagement xrum = XmlRpcProxyGen.Create<XmlRpcVirtualNetworkManagement>();
+            XmlRpcVirtualNetworkManagement xrum = (XmlRpcVirtualNetworkManagement)GetProxy(typeof(XmlRpcVirtualNetworkManagement));
             Array openNebulaReturnArr = xrum.oneVirtualNetworkInfo(this.SessionSHA, id);
             result = (VNET)Deserialize(typeof(VNET), openNebulaReturnArr.GetValue(1).ToString());
             return result;
@@ -70,7 +70,7 @@ namespace Terradue.OpenNebula {
         /// <param name="rangeEndId">Range end identifier.</param>
         public VNET_POOL VNetGetPoolInfo(int templateFilterFlag, int rangeStartId, int rangeEndId){
             VNET_POOL result = null;
-            XmlRpcVirtualNetworkManagement xrum = XmlRpcProxyGen.Create<XmlRpcVirtualNetworkManagement>();
+            XmlRpcVirtualNetworkManagement xrum = (XmlRpcVirtualNetworkManagement)GetProxy(typeof(XmlRpcVirtualNetworkManagement));
             Array openNebulaReturnArr = xrum.oneVirtualNetworkPoolInfo(this.SessionSHA, templateFilterFlag, rangeStartId, rangeEndId);
             result = (VNET_POOL)Deserialize(typeof(VNET_POOL), openNebulaReturnArr.GetValue(1).ToString());
             return result;

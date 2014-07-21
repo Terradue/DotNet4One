@@ -13,7 +13,7 @@ namespace Terradue.OpenNebula {
         /// <param name="enable">If set to <c>true</c> enable.</param>
         public bool HostEnable(int hostId, bool enable){
             bool result = false;
-            XmlRpcHostManagement xrum = XmlRpcProxyGen.Create<XmlRpcHostManagement>();
+            XmlRpcHostManagement xrum = (XmlRpcHostManagement)GetProxy(typeof(XmlRpcHostManagement));
             Array openNebulaReturnArr = xrum.oneHostEnable(this.SessionSHA, hostId, enable);
             result = (bool)openNebulaReturnArr.GetValue(0);
             return result;
@@ -28,7 +28,7 @@ namespace Terradue.OpenNebula {
         /// <param name="type">Type.</param>
         public bool HostUpdate(int hostId, string template, int type){
             bool result = false;
-            XmlRpcHostManagement xrum = XmlRpcProxyGen.Create<XmlRpcHostManagement>();
+            XmlRpcHostManagement xrum = (XmlRpcHostManagement)GetProxy(typeof(XmlRpcHostManagement));
             Array openNebulaReturnArr = xrum.oneHostUpdate(this.SessionSHA, hostId, template, type);
             result = (bool)openNebulaReturnArr.GetValue(0);
             return result;
@@ -45,7 +45,7 @@ namespace Terradue.OpenNebula {
         /// <param name="clusterId">Cluster identifier.</param>
         public int HostAllocate(string hostname, string infoManagerName, string vmManagerName, string vnManagerName, int clusterId){
             int result = 0;
-            XmlRpcHostManagement xrum = XmlRpcProxyGen.Create<XmlRpcHostManagement>();
+            XmlRpcHostManagement xrum = (XmlRpcHostManagement)GetProxy(typeof(XmlRpcHostManagement));
             Array openNebulaReturnArr = xrum.oneHostAllocate(this.SessionSHA, hostname, infoManagerName, vmManagerName, vnManagerName, clusterId);
             result = (int)openNebulaReturnArr.GetValue(1);
             return result;
@@ -58,7 +58,7 @@ namespace Terradue.OpenNebula {
         /// <param name="hostId">Host identifier.</param>
         public bool HostDelete(int hostId){
             bool result = false;
-            XmlRpcHostManagement xrum = XmlRpcProxyGen.Create<XmlRpcHostManagement>();
+            XmlRpcHostManagement xrum = (XmlRpcHostManagement)GetProxy(typeof(XmlRpcHostManagement));
             Array openNebulaReturnArr = xrum.oneHostDelete(this.SessionSHA, hostId);
             result = (bool)openNebulaReturnArr.GetValue(0);
             return result;
@@ -72,7 +72,7 @@ namespace Terradue.OpenNebula {
         /// <param name="newName">New name.</param>
         public bool HostRename(int hostId, string newName){
             bool result = false;
-            XmlRpcHostManagement xrum = XmlRpcProxyGen.Create<XmlRpcHostManagement>();
+            XmlRpcHostManagement xrum = (XmlRpcHostManagement)GetProxy(typeof(XmlRpcHostManagement));
             Array openNebulaReturnArr = xrum.oneHostRename(this.SessionSHA, hostId, newName);
             result = (bool)openNebulaReturnArr.GetValue(0);
             return result;
@@ -85,7 +85,7 @@ namespace Terradue.OpenNebula {
         /// <param name="hostId">Host identifier.</param>
         public HOST HostGetInfo(int hostId){
             HOST result = null;
-            XmlRpcHostManagement xrum = XmlRpcProxyGen.Create<XmlRpcHostManagement>();
+            XmlRpcHostManagement xrum = (XmlRpcHostManagement)GetProxy(typeof(XmlRpcHostManagement));
             Array openNebulaReturnArr = xrum.oneHostInfo(this.SessionSHA, hostId);
             result = (HOST)Deserialize(typeof(HOST), openNebulaReturnArr.GetValue(1).ToString());
             return result;
@@ -97,7 +97,7 @@ namespace Terradue.OpenNebula {
         /// <returns>The host list info.</returns>
         public HOST_POOL HostGetPoolInfo(){
             HOST_POOL result = null;
-            XmlRpcHostManagement xrum = XmlRpcProxyGen.Create<XmlRpcHostManagement>();
+            XmlRpcHostManagement xrum = (XmlRpcHostManagement)GetProxy(typeof(XmlRpcHostManagement));
             Array openNebulaReturnArr = xrum.oneHostPoolInfo(this.SessionSHA);
             result = (HOST_POOL)Deserialize(typeof(HOST_POOL), openNebulaReturnArr.GetValue(1).ToString());
             return result;

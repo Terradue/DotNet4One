@@ -3,7 +3,6 @@ using CookComputing.XmlRpc;
 
 namespace Terradue.OpenNebula {
 
-    [XmlRpcUrl(Terradue.OpenNebula.Configuration.XMLRPC_SERVER)]
     public interface XmlRpcZoneManagement : IXmlRpcProxy
     {
         [XmlRpcMethod("one.zone.allocate")]

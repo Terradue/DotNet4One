@@ -9,19 +9,19 @@ namespace Terradue.OpenNebula {
         /// Gets or sets the proxy URL.
         /// </summary>
         /// <value>The proxy URL.</value>
-        string ProxyUrl { get; protected set; }
+        private string ProxyUrl { get; set; }
 
         /// <summary>
         /// Gets or sets the admin username.
         /// </summary>
         /// <value>The admin username.</value>
-        string AdminUsername { get; protected set; }
+        private string AdminUsername { get; set; }
 
         /// <summary>
         /// Gets or sets the admin password.
         /// </summary>
         /// <value>The admin password.</value>
-        string AdminPassword { get; protected set; }
+        private string AdminPassword { get; set; }
 
         /// <summary>
         /// Gets the session SHA.
@@ -51,9 +51,9 @@ namespace Terradue.OpenNebula {
         }
 
         public IXmlRpcProxy GetProxy(Type type){
-            MethodInfo mi = typeof(XmlRpcProxyGen).GetMethod("Create");
+            MethodInfo mi = typeof(XmlRpcProxyGen).GetMethod("Create", new Type[]{});
             MethodInfo gmi = mi.MakeGenericMethod(type);
-            IXmlRpcProxy result = (IXmlRpcProxy)gmi.Invoke();
+            IXmlRpcProxy result = (IXmlRpcProxy)gmi.Invoke(null,null);
             result.Url = this.ProxyUrl;
             return result;
         }

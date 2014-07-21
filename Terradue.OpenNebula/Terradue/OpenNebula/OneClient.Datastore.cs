@@ -12,7 +12,7 @@ namespace Terradue.OpenNebula {
         /// <param name="template">Template.</param>
         public int DatastoreAllocate(string template){
             int result = 0;
-            XmlRpcDatastoreManagement xrum = XmlRpcProxyGen.Create<XmlRpcDatastoreManagement>();
+            XmlRpcDatastoreManagement xrum = (XmlRpcDatastoreManagement)GetProxy(typeof(XmlRpcDatastoreManagement));
             Array openNebulaReturnArr = xrum.oneDatastoreAllocate(this.SessionSHA, template);
             result = (int)openNebulaReturnArr.GetValue(1);
             return result;
@@ -25,7 +25,7 @@ namespace Terradue.OpenNebula {
         /// <param name="dsId">Ds identifier.</param>
         public bool DatastoreDelete(int dsId){
             bool result = false;
-            XmlRpcDatastoreManagement xrum = XmlRpcProxyGen.Create<XmlRpcDatastoreManagement>();
+            XmlRpcDatastoreManagement xrum = (XmlRpcDatastoreManagement)GetProxy(typeof(XmlRpcDatastoreManagement));
             Array openNebulaReturnArr = xrum.oneDatastoreDelete(this.SessionSHA, dsId);
             result = (bool)openNebulaReturnArr.GetValue(0);
             return result;
@@ -38,7 +38,7 @@ namespace Terradue.OpenNebula {
         /// <param name="dsId">Ds identifier.</param>
         public DATASTORE GetDatastoreInfo(int dsId){
             DATASTORE result = null;
-            XmlRpcDatastoreManagement xrum = XmlRpcProxyGen.Create<XmlRpcDatastoreManagement>();
+            XmlRpcDatastoreManagement xrum = (XmlRpcDatastoreManagement)GetProxy(typeof(XmlRpcDatastoreManagement));
             Array openNebulaReturnArr = xrum.oneDatastoreInfo(this.SessionSHA, dsId);
             result = (DATASTORE)Deserialize(typeof(DATASTORE), openNebulaReturnArr.GetValue(1).ToString());
             return result;
@@ -50,7 +50,7 @@ namespace Terradue.OpenNebula {
         /// <returns>The datastore list info.</returns>
         public DATASTORE_POOL DatastoreGetPoolInfo(){
             DATASTORE_POOL result = null;
-            XmlRpcDatastoreManagement xrum = XmlRpcProxyGen.Create<XmlRpcDatastoreManagement>();
+            XmlRpcDatastoreManagement xrum = (XmlRpcDatastoreManagement)GetProxy(typeof(XmlRpcDatastoreManagement));
             Array openNebulaReturnArr = xrum.oneDatastorePoolInfo(this.SessionSHA);
             result = (DATASTORE_POOL)Deserialize(typeof(DATASTORE_POOL), openNebulaReturnArr.GetValue(1).ToString());
             return result;
@@ -65,7 +65,7 @@ namespace Terradue.OpenNebula {
         /// <param name="type">Type.</param>
         public bool DatastoreUpdate(int dsId, string template, int type){
             bool result = false;
-            XmlRpcDatastoreManagement xrum = XmlRpcProxyGen.Create<XmlRpcDatastoreManagement>();
+            XmlRpcDatastoreManagement xrum = (XmlRpcDatastoreManagement)GetProxy(typeof(XmlRpcDatastoreManagement));
             Array openNebulaReturnArr = xrum.oneDatastoreUpdate(this.SessionSHA, dsId, template, type);
             result = (bool)openNebulaReturnArr.GetValue(0);
             return result;
@@ -87,7 +87,7 @@ namespace Terradue.OpenNebula {
         /// <param name="otherAdmin">Other admin.</param>
         public bool DatastoreChmod(int dsId, int userUse, int userManage, int userAdmin, int groupUse, int groupManage, int groupAdmin, int otherUse, int otherManage, int otherAdmin){
             bool result = false;
-            XmlRpcDatastoreManagement xrum = XmlRpcProxyGen.Create<XmlRpcDatastoreManagement>();
+            XmlRpcDatastoreManagement xrum = (XmlRpcDatastoreManagement)GetProxy(typeof(XmlRpcDatastoreManagement));
             Array openNebulaReturnArr = xrum.oneDatastoreChmod(this.SessionSHA, dsId, userUse, userManage, userAdmin, groupUse, groupManage, groupAdmin, otherUse, otherManage, otherAdmin);
             result = (bool)openNebulaReturnArr.GetValue(0);
             return result;
@@ -102,7 +102,7 @@ namespace Terradue.OpenNebula {
         /// <param name="groupId">Group identifier.</param>
         public bool DatastoreChown(int dsId, int userId, int groupId){
             bool result = false;
-            XmlRpcDatastoreManagement xrum = XmlRpcProxyGen.Create<XmlRpcDatastoreManagement>();
+            XmlRpcDatastoreManagement xrum = (XmlRpcDatastoreManagement)GetProxy(typeof(XmlRpcDatastoreManagement));
             Array openNebulaReturnArr = xrum.oneDatastoreChown(this.SessionSHA, dsId, userId, groupId);
             result = (bool)openNebulaReturnArr.GetValue(0);
             return result;
@@ -116,7 +116,7 @@ namespace Terradue.OpenNebula {
         /// <param name="name">Name.</param>
         public bool DatastoreRename(int dsId, string name){
             bool result = false;
-            XmlRpcDatastoreManagement xrum = XmlRpcProxyGen.Create<XmlRpcDatastoreManagement>();
+            XmlRpcDatastoreManagement xrum = (XmlRpcDatastoreManagement)GetProxy(typeof(XmlRpcDatastoreManagement));
             Array openNebulaReturnArr = xrum.oneDatastoreRename(this.SessionSHA, dsId, name);
             result = (bool)openNebulaReturnArr.GetValue(0);
             return result;

@@ -7,7 +7,7 @@ namespace Terradue.OpenNebula {
     public class Configuration {
 
         /// <summary>The XMLRPC SERVER url</summary>
-        public const String XMLRPC_SERVER = "http://cloud-dev.terradue.int:2633/RPC2";
+        public const String XMLRPC_SERVER = "<YOUR_SERVER_URL>";
 
     }
 }

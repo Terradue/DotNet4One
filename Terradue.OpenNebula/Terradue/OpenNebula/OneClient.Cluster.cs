@@ -12,7 +12,7 @@ namespace Terradue.OpenNebula {
         /// <param name="content">Content.</param>
         public int ClusterAllocate(string content){
             int result = 0;
-            XmlRpcClusterManagement xrum = XmlRpcProxyGen.Create<XmlRpcClusterManagement>();
+            XmlRpcClusterManagement xrum = (XmlRpcClusterManagement)GetProxy(typeof(XmlRpcClusterManagement));
             Array openNebulaReturnArr = xrum.oneClusterAllocate(this.SessionSHA, content);
             result = (int)openNebulaReturnArr.GetValue(1);
             return result;
@@ -25,7 +25,7 @@ namespace Terradue.OpenNebula {
         /// <param name="id">Identifier.</param>
         public bool ClusterDelete(int id){
             bool result = false;
-            XmlRpcClusterManagement xrum = XmlRpcProxyGen.Create<XmlRpcClusterManagement>();
+            XmlRpcClusterManagement xrum = (XmlRpcClusterManagement)GetProxy(typeof(XmlRpcClusterManagement));
             Array openNebulaReturnArr = xrum.oneClusterDelete(this.SessionSHA, id);
             result = (bool)openNebulaReturnArr.GetValue(0);
             return result;
@@ -40,7 +40,7 @@ namespace Terradue.OpenNebula {
         /// <param name="type">Type.</param>
         public bool ClusterUpdate(int id, string templateContent, int type){
             bool result = false;
-            XmlRpcClusterManagement xrum = XmlRpcProxyGen.Create<XmlRpcClusterManagement>();
+            XmlRpcClusterManagement xrum = (XmlRpcClusterManagement)GetProxy(typeof(XmlRpcClusterManagement));
             Array openNebulaReturnArr = xrum.oneClusterUpdate(this.SessionSHA, id, templateContent, type);
             result = (bool)openNebulaReturnArr.GetValue(0);
             return result;
@@ -54,7 +54,7 @@ namespace Terradue.OpenNebula {
         /// <param name="hostId">Host identifier.</param>
         public bool ClusterAddHost(int id, int hostId){
             bool result = false;
-            XmlRpcClusterManagement xrum = XmlRpcProxyGen.Create<XmlRpcClusterManagement>();
+            XmlRpcClusterManagement xrum = (XmlRpcClusterManagement)GetProxy(typeof(XmlRpcClusterManagement));
             Array openNebulaReturnArr = xrum.oneClusterAddHost(this.SessionSHA, id, hostId);
             result = (bool)openNebulaReturnArr.GetValue(0);
             return result;
@@ -68,7 +68,7 @@ namespace Terradue.OpenNebula {
         /// <param name="hostId">Host identifier.</param>
         public bool ClusterDeleteHost(int id, int hostId){
             bool result = false;
-            XmlRpcClusterManagement xrum = XmlRpcProxyGen.Create<XmlRpcClusterManagement>();
+            XmlRpcClusterManagement xrum = (XmlRpcClusterManagement)GetProxy(typeof(XmlRpcClusterManagement));
             Array openNebulaReturnArr = xrum.oneClusterDeleteHost(this.SessionSHA, id, hostId);
             result = (bool)openNebulaReturnArr.GetValue(0);
             return result;
@@ -82,7 +82,7 @@ namespace Terradue.OpenNebula {
         /// <param name="datastoreId">Datastore identifier.</param>
         public bool ClusterAddDataStore(int id, int datastoreId){
             bool result = false;
-            XmlRpcClusterManagement xrum = XmlRpcProxyGen.Create<XmlRpcClusterManagement>();
+            XmlRpcClusterManagement xrum = (XmlRpcClusterManagement)GetProxy(typeof(XmlRpcClusterManagement));
             Array openNebulaReturnArr = xrum.oneClusterAddDataStore(this.SessionSHA, id, datastoreId);
             result = (bool)openNebulaReturnArr.GetValue(0);
             return result;
@@ -96,7 +96,7 @@ namespace Terradue.OpenNebula {
         /// <param name="datastoreId">Datastore identifier.</param>
         public bool ClusterDeleteDataStore(int id, int datastoreId){
             bool result = false;
-            XmlRpcClusterManagement xrum = XmlRpcProxyGen.Create<XmlRpcClusterManagement>();
+            XmlRpcClusterManagement xrum = (XmlRpcClusterManagement)GetProxy(typeof(XmlRpcClusterManagement));
             Array openNebulaReturnArr = xrum.oneClusterDeleteDataStore(this.SessionSHA, id, datastoreId);
             result = (bool)openNebulaReturnArr.GetValue(0);
             return result;
@@ -110,7 +110,7 @@ namespace Terradue.OpenNebula {
         /// <param name="vnId">Vn identifier.</param>
         public bool ClusterAddVirtualNetwork(int id, int vnId){
             bool result = false;
-            XmlRpcClusterManagement xrum = XmlRpcProxyGen.Create<XmlRpcClusterManagement>();
+            XmlRpcClusterManagement xrum = (XmlRpcClusterManagement)GetProxy(typeof(XmlRpcClusterManagement));
             Array openNebulaReturnArr = xrum.oneClusterAddVirtualNetwork(this.SessionSHA, id, vnId);
             result = (bool)openNebulaReturnArr.GetValue(0);
             return result;
@@ -124,7 +124,7 @@ namespace Terradue.OpenNebula {
         /// <param name="vnId">Vn identifier.</param>
         public bool ClusterDeleteVirtualNetwork(int id, int vnId){
             bool result = false;
-            XmlRpcClusterManagement xrum = XmlRpcProxyGen.Create<XmlRpcClusterManagement>();
+            XmlRpcClusterManagement xrum = (XmlRpcClusterManagement)GetProxy(typeof(XmlRpcClusterManagement));
             Array openNebulaReturnArr = xrum.oneClusterDeleteVirtualNetwork(this.SessionSHA, id, vnId);
             result = (bool)openNebulaReturnArr.GetValue(0);
             return result;
@@ -138,7 +138,7 @@ namespace Terradue.OpenNebula {
         /// <param name="newName">New name.</param>
         public bool RenameCluster(int id, string newName){
             bool result = false;
-            XmlRpcClusterManagement xrum = XmlRpcProxyGen.Create<XmlRpcClusterManagement>();
+            XmlRpcClusterManagement xrum = (XmlRpcClusterManagement)GetProxy(typeof(XmlRpcClusterManagement));
             Array openNebulaReturnArr = xrum.oneClusterRename(this.SessionSHA, id, newName);
             result = (bool)openNebulaReturnArr.GetValue(0);
             return result;
@@ -151,7 +151,7 @@ namespace Terradue.OpenNebula {
         /// <param name="id">Identifier.</param>
         public CLUSTER ClusterGetInfo(int id){
             CLUSTER result = null;
-            XmlRpcClusterManagement xrum = XmlRpcProxyGen.Create<XmlRpcClusterManagement>();
+            XmlRpcClusterManagement xrum = (XmlRpcClusterManagement)GetProxy(typeof(XmlRpcClusterManagement));
             Array openNebulaReturnArr = xrum.oneClusterInfo(this.SessionSHA, id);
             result = (CLUSTER)Deserialize(typeof(CLUSTER), openNebulaReturnArr.GetValue(1).ToString());
             return result;
@@ -163,7 +163,7 @@ namespace Terradue.OpenNebula {
         /// <returns>The cluster list info.</returns>
         public CLUSTER_POOL ClusterGetPoolInfo(){
             CLUSTER_POOL result = null;
-            XmlRpcClusterManagement xrum = XmlRpcProxyGen.Create<XmlRpcClusterManagement>();
+            XmlRpcClusterManagement xrum = (XmlRpcClusterManagement)GetProxy(typeof(XmlRpcClusterManagement));
             Array openNebulaReturnArr = xrum.oneClusterPoolInfo(this.SessionSHA);
             result = (CLUSTER_POOL)Deserialize(typeof(CLUSTER_POOL), openNebulaReturnArr.GetValue(1).ToString());
             return result;
