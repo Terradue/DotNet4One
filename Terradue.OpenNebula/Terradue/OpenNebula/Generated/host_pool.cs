@@ -19,8 +19,8 @@ namespace Terradue.OpenNebula {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://opennebula.org/XMLSchema")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace="http://opennebula.org/XMLSchema", IsNullable=false)]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace="", IsNullable=false)]
     public partial class HOST_POOL {
         
         private HOST[] hOSTField;
@@ -42,8 +42,8 @@ namespace Terradue.OpenNebula {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://opennebula.org/XMLSchema")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace="http://opennebula.org/XMLSchema", IsNullable=true)]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace="", IsNullable=true)]
     public partial class HOST {
         
         private string iDField;
@@ -201,7 +201,7 @@ namespace Terradue.OpenNebula {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://opennebula.org/XMLSchema")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="")]
     public partial class HOSTHOST_SHARE {
         
         private string dISK_USAGEField;
@@ -392,7 +392,7 @@ namespace Terradue.OpenNebula {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://opennebula.org/XMLSchema")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="")]
     public partial class HOSTHOST_SHAREDATASTORESDS {
         
         private string iDField1;

@@ -1,18 +1,27 @@
 ﻿using System;
+using CookComputing.XmlRpc;
+using System.Reflection;
 
 namespace Terradue.OpenNebula {
     public partial class OneClient {
+
+        /// <summary>
+        /// Gets or sets the proxy URL.
+        /// </summary>
+        /// <value>The proxy URL.</value>
+        string ProxyUrl { get; protected set; }
+
         /// <summary>
         /// Gets or sets the admin username.
         /// </summary>
         /// <value>The admin username.</value>
-        string AdminUsername { get; set; }
+        string AdminUsername { get; protected set; }
 
         /// <summary>
         /// Gets or sets the admin password.
         /// </summary>
         /// <value>The admin password.</value>
-        string AdminPassword { get; set; }
+        string AdminPassword { get; protected set; }
 
         /// <summary>
         /// Gets the session SHA.
@@ -30,8 +39,23 @@ namespace Terradue.OpenNebula {
         /// <param name="adminUsername">Admin username.</param>
         /// <param name="adminPassword">Admin password.</param>
         public OneClient(string adminUsername, string adminPassword) {
+            this.ProxyUrl = Configuration.XMLRPC_SERVER;
             this.AdminUsername = adminUsername;
             this.AdminPassword = adminPassword;
+        }
+
+        public OneClient(string proxy, string adminUsername, string adminPassword) {
+            this.ProxyUrl = proxy;
+            this.AdminUsername = adminUsername;
+            this.AdminPassword = adminPassword;
+        }
+
+        public IXmlRpcProxy GetProxy(Type type){
+            MethodInfo mi = typeof(XmlRpcProxyGen).GetMethod("Create");
+            MethodInfo gmi = mi.MakeGenericMethod(type);
+            IXmlRpcProxy result = (IXmlRpcProxy)gmi.Invoke();
+            result.Url = this.ProxyUrl;
+            return result;
         }
 
         /// <summary>

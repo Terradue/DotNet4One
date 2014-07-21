@@ -19,8 +19,8 @@ namespace Terradue.OpenNebula {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://opennebula.org/XMLSchema")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace="http://opennebula.org/XMLSchema", IsNullable=false)]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace="", IsNullable=false)]
     public partial class VNET_POOL {
         
         private VNET[] vNETField;
@@ -42,8 +42,8 @@ namespace Terradue.OpenNebula {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://opennebula.org/XMLSchema")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace="http://opennebula.org/XMLSchema", IsNullable=true)]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace="", IsNullable=true)]
     public partial class VNET {
         
         private string iDField;
@@ -300,7 +300,7 @@ namespace Terradue.OpenNebula {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://opennebula.org/XMLSchema")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="")]
     public partial class VNETPERMISSIONS {
         
         private string oWNER_UField;
@@ -426,7 +426,7 @@ namespace Terradue.OpenNebula {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://opennebula.org/XMLSchema")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="")]
     public partial class VNETRANGE {
         
         private string iP_STARTField;
@@ -459,7 +459,7 @@ namespace Terradue.OpenNebula {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://opennebula.org/XMLSchema")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="")]
     public partial class VNETLEASESLEASE {
         
         private string mACField;

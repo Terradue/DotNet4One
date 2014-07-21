@@ -19,8 +19,8 @@ namespace Terradue.OpenNebula {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://opennebula.org/XMLSchema")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace="http://opennebula.org/XMLSchema", IsNullable=false)]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace="", IsNullable=false)]
     public partial class DATASTORE_POOL {
         
         private DATASTORE[] dATASTOREField;
@@ -42,8 +42,8 @@ namespace Terradue.OpenNebula {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://opennebula.org/XMLSchema")]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace="http://opennebula.org/XMLSchema", IsNullable=true)]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="")]
+    [System.Xml.Serialization.XmlRootAttribute(Namespace="", IsNullable=true)]
     public partial class DATASTORE {
         
         private string iDField;
@@ -290,7 +290,7 @@ namespace Terradue.OpenNebula {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://opennebula.org/XMLSchema")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="")]
     public partial class DATASTOREPERMISSIONS {
         
         private string oWNER_UField;
