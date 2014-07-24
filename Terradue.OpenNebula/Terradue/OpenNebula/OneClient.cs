@@ -24,12 +24,21 @@ namespace Terradue.OpenNebula {
         private string AdminPassword { get; set; }
 
         /// <summary>
+        /// Gets or sets the target username.
+        /// </summary>
+        /// <value>The target username.</value>
+        public string TargetUsername { get; set; }
+
+
+        /// <summary>
         /// Gets the session SHA.
         /// </summary>
         /// <value>The session SHA.</value>
         protected string SessionSHA { 
             get { 
-                return this.AdminUsername + ":" + this.AdminPassword; 
+                return "portal:portaltest";
+                return "serveradmin:f4b887a18de059129df8a265176f80bc479439a6";
+                return this.AdminUsername + (this.TargetUsername != null ? ":" + this.TargetUsername + ":" : ":") + this.AdminPassword; 
             } 
         }
 
@@ -44,12 +53,26 @@ namespace Terradue.OpenNebula {
             this.AdminPassword = adminPassword;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Terradue.OpenNebula.OneClient"/> class.
+        /// </summary>
+        /// <param name="proxy">Proxy url of the XML RPC server</param>
+        /// <param name="adminUsername">Admin username.</param>
+        /// <param name="adminPassword">Admin password.</param>
         public OneClient(string proxy, string adminUsername, string adminPassword) {
+            if (proxy == null) throw new Exception("ONe XML RPC proxy url cannot be null");
+            if (adminUsername == null) throw new Exception("ONe XML RPC user cannot be null");
+
             this.ProxyUrl = proxy;
             this.AdminUsername = adminUsername;
             this.AdminPassword = adminPassword;
         }
-
+            
+        /// <summary>
+        /// Creates the proxy management object
+        /// </summary>
+        /// <returns>The proxy.</returns>
+        /// <param name="type">Type.</param>
         public IXmlRpcProxy GetProxy(Type type){
             MethodInfo mi = typeof(XmlRpcProxyGen).GetMethod("Create", new Type[]{});
             MethodInfo gmi = mi.MakeGenericMethod(type);

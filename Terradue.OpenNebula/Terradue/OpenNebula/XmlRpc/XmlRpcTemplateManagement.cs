@@ -49,13 +49,15 @@ namespace Terradue.OpenNebula {
 
 
         [XmlRpcMethod("one.template.instantiate")]
-        Array oneTemplateInstantiate(string sessionSHA, int templateId, string newVMInstanceName);
+        Array oneTemplateInstantiate(string sessionSHA, int templateId, string newVMInstanceName, bool onHold, string extraTemplateAttributes);
 
         /*Description: Instantiates a new virtual machine from a template.
 
             IN   String  The session string.
             IN   Int     The object ID.
             IN   String  Name for the new VM instance. If it is an empty string, OpenNebula will assign one automatically.
+            IN   Boolean False to create the VM on pending (default), True to create it on hold.
+            IN   String  A string containing an extra template to be merged with the one being instantiated. It can be empty. Syntax can be the usual attribute=value or XML.
             OUT  Boolean     true or false whenever is successful or not
             OUT  Int/String  The new virtual machine ID / The error string.
             OUT  Int     Error code.*/
@@ -63,13 +65,14 @@ namespace Terradue.OpenNebula {
 
 
         [XmlRpcMethod("one.template.update")]
-        Array oneTemplateUpdate(string sessionSHA, int templateId, string atributeValueContent);
+        Array oneTemplateUpdate(string sessionSHA, int templateId, string atributeValueContent, int updateType);
 
         /*Description: Replaces the template contents.
 
             IN   String  The session string.
             IN   Int     The object ID.
             IN   String  The new template contents. Syntax can be the usual “attribute=value” or XML.
+            IN   Int     Update type: 0: replace the whole template. 1: Merge new template with the existing one.
             OUT  Boolean     true or false whenever is successful or not
             OUT  Int/String  The resource ID / The error string.
             OUT  Int     Error code.*/

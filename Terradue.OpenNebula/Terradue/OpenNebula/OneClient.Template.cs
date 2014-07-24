@@ -46,15 +46,17 @@ namespace Terradue.OpenNebula {
         }
 
         /// <summary>
-        /// Instanciates the VM from template.
+        /// Instanciates a VM from the template
         /// </summary>
-        /// <returns>The new VM id</returns>
-        /// <param name="id">Identifier of the template.</param>
-        /// <param name="templateName">New VM name.</param>
-        public int TemplateInstanciateVM(int id, string vmName){
+        /// <returns>ID of the instanciated VM.</returns>
+        /// <param name="id">Identifier.</param>
+        /// <param name="vmName">Vm name.</param>
+        /// <param name="onHold">If set to <c>true</c> VM is created on hold else pending.</param>
+        /// <param name="extraTemplateAttributes">Extra template attributes.</param>
+        public int TemplateInstanciateVM(int id, string vmName, bool onHold, string extraTemplateAttributes){
             int result = 0;
             XmlRpcTemplateManagement xrum = (XmlRpcTemplateManagement)GetProxy(typeof(XmlRpcTemplateManagement));
-            Array openNebulaReturnArr = xrum.oneTemplateInstantiate(this.SessionSHA, id, vmName);
+            Array openNebulaReturnArr = xrum.oneTemplateInstantiate(this.SessionSHA, id, vmName, onHold, extraTemplateAttributes);
             result = (int)openNebulaReturnArr.GetValue(1);
             return result;
         }
@@ -74,15 +76,16 @@ namespace Terradue.OpenNebula {
         }
 
         /// <summary>
-        /// Updates the template.
+        /// Updates the template
         /// </summary>
         /// <returns><c>true</c>, if template was updated, <c>false</c> otherwise.</returns>
         /// <param name="id">Identifier.</param>
         /// <param name="newContent">New content.</param>
-        public bool TemplateUpdate(int id, string newContent){
+        /// <param name="updateType">Update type.</param>
+        public bool TemplateUpdate(int id, string newContent, int updateType){
             bool result = false;
             XmlRpcTemplateManagement xrum = (XmlRpcTemplateManagement)GetProxy(typeof(XmlRpcTemplateManagement));
-            Array openNebulaReturnArr = xrum.oneTemplateUpdate(this.SessionSHA, id, newContent);
+            Array openNebulaReturnArr = xrum.oneTemplateUpdate(this.SessionSHA, id, newContent, updateType);
             result = (bool)openNebulaReturnArr.GetValue(0);
             return result;
         }
