@@ -151,9 +151,12 @@ namespace Terradue.OpenNebula {
                     AES.KeySize = 256;
                     AES.BlockSize = 128;
 
-                    var key = new Rfc2898DeriveBytes(passwordBytes, saltBytes, 1000);
-                    AES.Key = key.GetBytes(AES.KeySize / 8);
-                    AES.IV = key.GetBytes(AES.BlockSize / 8);
+                    //var key = new Rfc2898DeriveBytes(passwordBytes, saltBytes, 2048);
+                    //AES.Key = key.GetBytes(AES.KeySize / 8);
+                    //AES.IV = key.GetBytes(AES.BlockSize / 8);
+                    AES.Key = passwordBytes;
+                    AES.IV = passwordBytes;
+                    AES.Padding = PaddingMode.Zeros;
 
                     AES.Mode = CipherMode.CBC;
 
@@ -170,25 +173,57 @@ namespace Terradue.OpenNebula {
         }
 
 
-        public static string Encrypt(string plainText, string passphrase)
+        /// <summary>
+        /// Encrypts a string
+        /// </summary>
+        /// <param name="PlainText">Text to be encrypted</param>
+        /// <param name="Password">Password to encrypt with</param>
+        /// <param name="Salt">Salt to encrypt with</param>
+        /// <param name="HashAlgorithm">Can be either SHA1 or MD5</param>
+        /// <param name="PasswordIterations">Number of iterations to do</param>
+        /// <param name="InitialVector">Needs to be 16 ASCII characters long</param>
+        /// <param name="KeySize">Can be 128, 192, or 256</param>
+        /// <returns>An encrypted string</returns>
+        public static string Encrypt(string PlainText, string Password,
+            string Salt = "Kosher", string HashAlgorithm = "SHA1",
+                                     int PasswordIterations = 2048, string InitialVector = "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0",
+                                     int KeySize = 256)
         {
-            byte[] key, iv;
-//            var salt = new byte[8];
-//            new RNGCryptoServiceProvider().GetNonZeroBytes(salt);
-//
+            if (string.IsNullOrEmpty(PlainText))
+                return "";
+            byte[] InitialVectorBytes = Encoding.ASCII.GetBytes(InitialVector);
+            byte[] SaltValueBytes = Encoding.ASCII.GetBytes(Salt);
+            byte[] PlainTextBytes = Encoding.UTF8.GetBytes(PlainText);
+            string hash = "";
+            byte[] KeyBytes = null;
             using(var cryptoProvider = new SHA1CryptoServiceProvider())
             {
-                key = cryptoProvider.ComputeHash(Encoding.UTF8.GetBytes(passphrase));
-                iv = key;
+                hash = BitConverter
+                    .ToString(cryptoProvider.ComputeHash(Encoding.UTF8.GetBytes(Password))).Replace("-", "").ToLower();
             }
-
-            return AES_Encrypt(Encoding.UTF8.GetBytes(plainText), key);
-
-//            EvpBytesToKey(passphrase, salt, out key, out iv);
-//            byte[] encryptedBytes = AesEncrypt(plainText, key, iv);
-//
-//            var encryptedBytesWithSalt = CombineSaltAndEncryptedData(encryptedBytes, salt);
-//            return Convert.ToBase64String(encryptedBytes);
+            Array.Resize<byte>(ref KeyBytes, KeySize / 8);
+            KeyBytes = Encoding.UTF8.GetBytes(hash.ToCharArray(), 0, KeySize / 8);
+            RijndaelManaged SymmetricKey = new RijndaelManaged();
+            SymmetricKey.Mode = CipherMode.CBC;
+            SymmetricKey.KeySize = KeySize;
+            SymmetricKey.Padding = PaddingMode.PKCS7;
+            byte[] CipherTextBytes = null;
+            using (ICryptoTransform Encryptor = SymmetricKey.CreateEncryptor(KeyBytes, InitialVectorBytes))
+            {
+                using (MemoryStream MemStream = new MemoryStream())
+                {
+                    using (CryptoStream CryptoStream = new CryptoStream(MemStream, Encryptor, CryptoStreamMode.Write))
+                    {
+                        CryptoStream.Write(PlainTextBytes, 0, PlainTextBytes.Length);
+                        CryptoStream.FlushFinalBlock();
+                        CipherTextBytes = MemStream.ToArray();
+                        MemStream.Close();
+                        CryptoStream.Close();
+                    }
+                }
+            }
+            SymmetricKey.Clear();
+            return Convert.ToBase64String(CipherTextBytes);
         }
 
         // OpenSSL prefixes the combined encrypted data and salt with "Salted__"
