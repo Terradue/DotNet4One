@@ -152,7 +152,7 @@ namespace Terradue.OpenNebula {
             byte[] encryptedBytes = AesEncrypt(plainText, key, iv);
 
             var encryptedBytesWithSalt = CombineSaltAndEncryptedData(encryptedBytes, salt);
-            return Convert.ToBase64String(encryptedBytes);
+            return Convert.ToBase64String(encryptedBytesWithSalt);
         }
 
         // OpenSSL prefixes the combined encrypted data and salt with "Salted__"
@@ -210,7 +210,7 @@ namespace Terradue.OpenNebula {
 
             while (!enoughBytesForKey)
             {
-                int preHashLength = currentHash.Length + password.Length;// + salt.Length;
+                int preHashLength = currentHash.Length + password.Length + salt.Length;
                 byte[] preHash = new byte[preHashLength];
 
                 Buffer.BlockCopy(currentHash, 0, preHash, 0, currentHash.Length);
