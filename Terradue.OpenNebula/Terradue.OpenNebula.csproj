@@ -7,8 +7,6 @@
     <OutputType>Library</OutputType>
     <RootNamespace>Terradue.OpenNebula</RootNamespace>
     <AssemblyName>Terradue.OpenNebula</AssemblyName>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -72,6 +70,7 @@
     <Compile Include="Terradue\OpenNebula\OneClient.VM.cs" />
     <Compile Include="Terradue\OpenNebula\OneClient.VNet.cs" />
     <Compile Include="Terradue\OpenNebula\OneClient.Zone.cs" />
+    <Compile Include="Terradue\OpenNebula\OpenSslAes.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
