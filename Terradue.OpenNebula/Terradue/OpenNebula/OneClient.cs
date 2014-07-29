@@ -40,12 +40,9 @@ namespace Terradue.OpenNebula {
         /// <value>The session SHA.</value>
         protected string SessionSHA { 
             get { 
-                if (this.TargetUsername != null){
-                    TimeSpan span= DateTime.Now.Subtract(new DateTime(1970,1,1,0,0,0, DateTimeKind.Utc));
-                    return this.AdminUsername + ":" + this.TargetUsername + ":" + OpenSslAes.Encrypt(this.AdminUsername + ":" + this.TargetUsername + ":" + span.TotalSeconds + 3600 + "", this.AdminPassword);
-                }
-                else
-                    return this.AdminUsername + ":" + this.AdminPassword;
+                if (this.TargetUsername == null) this.TargetUsername = this.AdminUsername;
+                TimeSpan span= DateTime.Now.Subtract(new DateTime(1970,1,1,0,0,0, DateTimeKind.Utc));
+                return this.AdminUsername + ":" + this.TargetUsername + ":" + OpenSslAes.Encrypt(this.AdminUsername + ":" + this.TargetUsername + ":" + span.TotalSeconds + 3600 + "", this.AdminPassword);
             } 
         }
 
