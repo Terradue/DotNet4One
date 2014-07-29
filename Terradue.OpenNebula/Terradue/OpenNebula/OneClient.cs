@@ -135,49 +135,85 @@ namespace Terradue.OpenNebula {
 
     public class OpenSslAes
     {
+
+        public static string AES_Encrypt(byte[] bytesToBeEncrypted, byte[] passwordBytes)
+        {
+            byte[] encryptedBytes = null;
+
+            // Set your salt here, change it to meet your flavor:
+            // The salt bytes must be at least 8 bytes.
+            byte[] saltBytes = new byte[] { 1, 2, 3, 4, 5, 6, 7, 8 };
+
+            using (MemoryStream ms = new MemoryStream())
+            {
+                using (RijndaelManaged AES = new RijndaelManaged())
+                {
+                    AES.KeySize = 256;
+                    AES.BlockSize = 128;
+
+                    var key = new Rfc2898DeriveBytes(passwordBytes, saltBytes, 1000);
+                    AES.Key = key.GetBytes(AES.KeySize / 8);
+                    AES.IV = key.GetBytes(AES.BlockSize / 8);
+
+                    AES.Mode = CipherMode.CBC;
+
+                    using (var cs = new CryptoStream(ms, AES.CreateEncryptor(), CryptoStreamMode.Write))
+                    {
+                        cs.Write(bytesToBeEncrypted, 0, bytesToBeEncrypted.Length);
+                        cs.Close();
+                    }
+                    encryptedBytes = ms.ToArray();
+                }
+            }
+
+            return Convert.ToBase64String(encryptedBytes);
+        }
+
+
         public static string Encrypt(string plainText, string passphrase)
         {
             byte[] key, iv;
-            var salt = new byte[8];
-            new RNGCryptoServiceProvider().GetNonZeroBytes(salt);
+//            var salt = new byte[8];
+//            new RNGCryptoServiceProvider().GetNonZeroBytes(salt);
+//
+            using(var cryptoProvider = new SHA1CryptoServiceProvider())
+            {
+                key = cryptoProvider.ComputeHash(Encoding.UTF8.GetBytes(passphrase));
+                iv = key;
+            }
 
+            return AES_Encrypt(Encoding.UTF8.GetBytes(plainText), key);
 
-            //key = System.Text.ASCIIEncoding.ASCII.GetBytes(passphrase);
-            //iv = System.Text.ASCIIEncoding.ASCII.GetBytes(passphrase);
-
-//            SHA1 sha = new SHA1CryptoServiceProvider();
-//            key = sha.ComputeHash(Encoding.ASCII.GetBytes(passphrase));
-//            iv = sha.ComputeHash(Encoding.ASCII.GetBytes(passphrase));
-            EvpBytesToKey(passphrase, salt, out key, out iv);
-            byte[] encryptedBytes = AesEncrypt(plainText, key, iv);
-
-            var encryptedBytesWithSalt = CombineSaltAndEncryptedData(encryptedBytes, salt);
-            return Convert.ToBase64String(encryptedBytesWithSalt);
+//            EvpBytesToKey(passphrase, salt, out key, out iv);
+//            byte[] encryptedBytes = AesEncrypt(plainText, key, iv);
+//
+//            var encryptedBytesWithSalt = CombineSaltAndEncryptedData(encryptedBytes, salt);
+//            return Convert.ToBase64String(encryptedBytes);
         }
 
         // OpenSSL prefixes the combined encrypted data and salt with "Salted__"
         private static byte[] CombineSaltAndEncryptedData(byte[] encryptedData, byte[] salt)
         {
             var encryptedBytesWithSalt = new byte[salt.Length + encryptedData.Length + 8];
-            Buffer.BlockCopy(Encoding.ASCII.GetBytes("Salted__"), 0, encryptedBytesWithSalt, 0, 8);
+            Buffer.BlockCopy(Encoding.UTF8.GetBytes("Salted__"), 0, encryptedBytesWithSalt, 0, 8);
             Buffer.BlockCopy(salt, 0, encryptedBytesWithSalt, 8, salt.Length);
             Buffer.BlockCopy(encryptedData, 0, encryptedBytesWithSalt, salt.Length + 8, encryptedData.Length);
             return encryptedBytesWithSalt;
         }
-
-        public static string Decrypt(string encrypted, string passphrase)
-        {
-            byte[] encryptedBytesWithSalt = Convert.FromBase64String(encrypted);
-
-            var salt = ExtractSalt(encryptedBytesWithSalt);
-            var encryptedBytes = ExtractEncryptedData(salt, encryptedBytesWithSalt);
-
-            byte[] key, iv;
-            EvpBytesToKey(passphrase, salt, out key, out iv);
-            return AesDecrypt(encryptedBytes, key, iv);
-        }
-
-
+//
+//        public static string Decrypt(string encrypted, string passphrase)
+//        {
+//            byte[] encryptedBytesWithSalt = Convert.FromBase64String(encrypted);
+//
+//            var salt = ExtractSalt(encryptedBytesWithSalt);
+//            var encryptedBytes = ExtractEncryptedData(salt, encryptedBytesWithSalt);
+//
+//            byte[] key, iv;
+//            EvpBytesToKey(passphrase, salt, out key, out iv);
+//            return AesDecrypt(encryptedBytes, key, iv);
+//        }
+//
+//
         // Pull the data out from the combined salt and data
         private static byte[] ExtractEncryptedData(byte[] salt, byte[] encryptedBytesWithSalt)
         {
