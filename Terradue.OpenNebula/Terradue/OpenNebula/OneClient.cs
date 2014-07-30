@@ -73,6 +73,7 @@ namespace Terradue.OpenNebula {
 
             this.ProxyUrl = proxy;
             this.AdminUsername = adminUsername;
+            this.TargetUsername = adminUsername;
             this.AdminPassword = adminPassword;
         }
             
