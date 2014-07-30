@@ -1,8 +1,18 @@
-﻿using System;
+﻿//
+//  XmlRpcZoneManagement.cs
+//
+//  Author:
+//       Enguerran Boissier <enguerran.boissier@terradue.com>
+//
+//  Copyright (c) 2014 Terradue
+
+using System;
 using CookComputing.XmlRpc;
 
 namespace Terradue.OpenNebula {
-
+    /// <summary>
+    /// Xml rpc zone management interface.
+    /// </summary>
     public interface XmlRpcZoneManagement : IXmlRpcProxy
     {
         [XmlRpcMethod("one.zone.allocate")]

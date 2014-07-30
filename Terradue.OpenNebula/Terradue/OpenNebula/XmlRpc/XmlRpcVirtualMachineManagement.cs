@@ -1,8 +1,18 @@
-﻿using System;
+﻿//
+//  XmlRpcVirtualMachineManagement.cs
+//
+//  Author:
+//       Enguerran Boissier <enguerran.boissier@terradue.com>
+//
+//  Copyright (c) 2014 Terradue
+
+using System;
 using CookComputing.XmlRpc;
 
 namespace Terradue.OpenNebula {
-
+    /// <summary>
+    /// Xml rpc virtual machine management.
+    /// </summary>
     public interface XmlRpcVirtualMachineManagement : IXmlRpcProxy
     {
 

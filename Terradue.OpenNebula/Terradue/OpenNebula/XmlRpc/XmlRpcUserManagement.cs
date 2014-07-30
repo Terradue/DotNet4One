@@ -1,8 +1,18 @@
-﻿using System;
+﻿//
+//  XmlRpcUserManagement.cs
+//
+//  Author:
+//       Enguerran Boissier <enguerran.boissier@terradue.com>
+//
+//  Copyright (c) 2014 Terradue
+
+using System;
 using CookComputing.XmlRpc;
 
 namespace Terradue.OpenNebula {
-
+    /// <summary>
+    /// Xml rpc user management.
+    /// </summary>
     public interface XmlRpcUserManagement : IXmlRpcProxy
     {
         [XmlRpcMethod("one.user.allocate")]

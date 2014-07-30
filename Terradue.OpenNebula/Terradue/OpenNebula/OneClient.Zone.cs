@@ -1,8 +1,19 @@
-﻿using System;
+﻿//
+//  OneClient.Zone.cs
+//
+//  Author:
+//       Enguerran Boissier <enguerran.boissier@terradue.com>
+//
+//  Copyright (c) 2014 Terradue
+
+using System;
 using CookComputing.XmlRpc;
 
 namespace Terradue.OpenNebula {
-
+    /// <summary>
+    /// DotNet4One Client calling XML-RPC requests exposed by an OpenNebula server.
+    /// XML-RPC commands for Zone.
+    /// </summary>
     public partial class OneClient {
                
         /// <summary>

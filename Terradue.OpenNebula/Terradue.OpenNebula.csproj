@@ -50,7 +50,6 @@
     <Compile Include="Terradue\OpenNebula\Generated\vnet_pool.cs" />
     <Compile Include="Terradue\OpenNebula\XmlRpc\XmlRpcUserManagement.cs" />
     <Compile Include="Terradue\OpenNebula\XmlRpc\XmlRpcImageManagement.cs" />
-    <Compile Include="Terradue\OpenNebula\XmlRpc\Configuration.cs" />
     <Compile Include="Terradue\OpenNebula\XmlRpc\XmlRpcTemplateManagement.cs" />
     <Compile Include="Terradue\OpenNebula\XmlRpc\XmlRpcVirtualMachineManagement.cs" />
     <Compile Include="Terradue\OpenNebula\XmlRpc\XmlRpcVirtualNetworkManagement.cs" />

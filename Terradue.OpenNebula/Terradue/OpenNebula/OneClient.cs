@@ -1,4 +1,12 @@
-﻿using System;
+﻿//
+//  OneClient.cs
+//
+//  Author:
+//       Enguerran Boissier <enguerran.boissier@terradue.com>
+//
+//  Copyright (c) 2014 Terradue
+
+using System;
 using CookComputing.XmlRpc;
 using System.Reflection;
 using System.Security.Cryptography;
@@ -7,6 +15,10 @@ using System.IO;
 using System.Collections.Generic;
 
 namespace Terradue.OpenNebula {
+    /// <summary>
+    /// DotNet4One Client calling XML-RPC requests exposed by an OpenNebula server.
+    /// Constructor and common function between all XML-RPC commands.
+    /// </summary>
     public partial class OneClient {
 
         /// <summary>
@@ -47,18 +59,6 @@ namespace Terradue.OpenNebula {
                 string encryptToken = OpenSslAes.Encrypt(token, this.AdminPassword);
                 return String.Format("{0}:{1}:{2}", this.AdminUsername, this.TargetUsername, encryptToken);
             } 
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Terradue.OpenNebula.OneUser"/> class.
-        /// </summary>
-        /// <param name="adminUsername">Admin username.</param>
-        /// <param name="adminPassword">Admin password.</param>
-        public OneClient(string adminUsername, string adminPassword) {
-            this.ProxyUrl = Configuration.XMLRPC_SERVER;
-            this.AdminUsername = adminUsername;
-            this.TargetUsername = adminUsername;
-            this.AdminPassword = adminPassword;
         }
 
         /// <summary>

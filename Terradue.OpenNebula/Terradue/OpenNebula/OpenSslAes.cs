@@ -1,9 +1,20 @@
-﻿using System;
+﻿//
+//  OpenSslAes.cs
+//
+//  Author:
+//       Enguerran Boissier <enguerran.boissier@terradue.com>
+//
+//  Copyright (c) 2014 Terradue
+
+using System;
 using System.Text;
 using System.Security.Cryptography;
 using System.IO;
 
 namespace Terradue.OpenNebula {
+    /// <summary>
+    /// Class containing methods to encrypt/decrypt a string as done in openssl AES
+    /// </summary>
     public class OpenSslAes
     {
 

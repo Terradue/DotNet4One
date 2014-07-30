@@ -1,8 +1,18 @@
-﻿using System;
+﻿//
+//  XmlRpcHostManagement.cs
+//
+//  Author:
+//       Enguerran Boissier <enguerran.boissier@terradue.com>
+//
+//  Copyright (c) 2014 Terradue
+
+using System;
 using CookComputing.XmlRpc;
 
 namespace Terradue.OpenNebula {
-
+    /// <summary>
+    /// Xml rpc host management.
+    /// </summary>
     public interface XmlRpcHostManagement : IXmlRpcProxy
     {
 
