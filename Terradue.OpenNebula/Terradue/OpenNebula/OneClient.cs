@@ -31,18 +31,21 @@ namespace Terradue.OpenNebula {
         /// Gets or sets the target username.
         /// </summary>
         /// <value>The target username.</value>
-        public string TargetUsername { get; set; }
-
+        private string TargetUsername { get; set; }
 
         /// <summary>
         /// Gets the session SHA.
+        /// Session SHA is encrypted with the target username (when request is done on the behalf of another user) 
+        /// as well as a value representing the validity duration of this token (default is 3600s=1h).
+        /// If no target username set request is done for the admin username.
         /// </summary>
         /// <value>The session SHA.</value>
         protected string SessionSHA { 
             get { 
-                if (this.TargetUsername == null) this.TargetUsername = this.AdminUsername;
                 TimeSpan span= DateTime.Now.Subtract(new DateTime(1970,1,1,0,0,0, DateTimeKind.Utc));
-                return this.AdminUsername + ":" + this.TargetUsername + ":" + OpenSslAes.Encrypt(this.AdminUsername + ":" + this.TargetUsername + ":" + span.TotalSeconds + 3600 + "", this.AdminPassword);
+                string token = String.Format("{0}:{1}:{2}", this.AdminUsername, this.TargetUsername, span.TotalSeconds + 3600);
+                string encryptToken = OpenSslAes.Encrypt(token, this.AdminPassword);
+                return String.Format("{0}:{1}:{2}", this.AdminUsername, this.TargetUsername, encryptToken);
             } 
         }
 
@@ -54,6 +57,7 @@ namespace Terradue.OpenNebula {
         public OneClient(string adminUsername, string adminPassword) {
             this.ProxyUrl = Configuration.XMLRPC_SERVER;
             this.AdminUsername = adminUsername;
+            this.TargetUsername = adminUsername;
             this.AdminPassword = adminPassword;
         }
 
@@ -83,6 +87,21 @@ namespace Terradue.OpenNebula {
             IXmlRpcProxy result = (IXmlRpcProxy)gmi.Invoke(null,null);
             result.Url = this.ProxyUrl;
             return result;
+        }
+
+        /// <summary>
+        /// Starts delegating requests on the behalh of another user
+        /// </summary>
+        /// <param name="username">Name of the target user.</param>
+        public void StartDelegate(string username){
+            this.TargetUsername = username;
+        }
+
+        /// <summary>
+        /// Ends delegating requests on the behalh of another user
+        /// </summary>
+        public void EndDelegate(){
+            this.TargetUsername = this.AdminUsername;
         }
 
         /// <summary>
