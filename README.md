@@ -3,11 +3,10 @@
 # DotNet4One - .Net Library to Access XML-RPC API of Opennebula 
 
 Terradue.DotNet4One is a library targeting .NET 4.0 and above providing an easy way to perform requests on any XML-RPC method exposed by an OpenNebula server.
-For XML-RPC API, cf http://docs.opennebula.org/4.6/integration/system_interfaces/api.html
+
+XML-RPC API documentation: http://docs.opennebula.org/4.6/integration/system_interfaces/api.html
 
 ## Usage examples
-
-Query 
 
 ```c#
 // First create the client
@@ -23,7 +22,6 @@ USER_POOL pool = one.UserGetPoolInfo();
 one.StartDelegate(request.Target);
 int RemoteId = one.TemplateInstanciateVM(idTemplate, vmName, false, "");
 one.EndDelegate();
-
 ```
 
 ## Supported Platforms
