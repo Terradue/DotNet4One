@@ -19,7 +19,8 @@ var one = new OneClient(proxyUrl,adminUser,adminPwd);
 USER_POOL pool = one.UserGetPoolInfo();
 
 // Do a request on behalf of a normal user
-one.StartDelegate(request.Target);
+string targetUser = "<YOUR_TARGET_USERNAME>";
+one.StartDelegate(targetUser);
 int RemoteId = one.TemplateInstanciateVM(idTemplate, vmName, false, "");
 one.EndDelegate();
 ```
