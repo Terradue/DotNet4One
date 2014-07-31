@@ -67,7 +67,7 @@ git clone git@github.com:Terradue/Terradue.OpenNebula.git Terradue.OpenNebula
 
 Copyright (c) 2014 Terradue
 
-Licensed under the [GPL v2 License](https://github.com/Terradue/DotNet4One/blob/master/LICENSE.txt)
+Licensed under the [GPL v3 License](https://github.com/Terradue/DotNet4One/blob/master/LICENSE)
 
 ### Questions, bugs, and suggestions
 
