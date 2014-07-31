@@ -83,4 +83,5 @@
     <None Include="packages.config" />
     <None Include="Terradue.OpenNebula.csproj" />
   </ItemGroup>
+  <Import Project="$(ProjectDir)\..\.nuget\NuGet.targets" Condition="Exists('$(ProjectDir)\..\.nuget\NuGet.targets')" />
 </Project>
