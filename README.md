@@ -67,5 +67,13 @@ git clone git@github.com:Terradue/Terradue.DotNet4One.git Terradue.DotNet4One
 
 Copyright (c) 2014 Terradue
 
-Licensed under the [GPL v2 License](https://github.com/Terradue.GeoJson/Terradue.DotNet4One/blob/master/LICENSE.txt)
+Licensed under the [GPL v2 License](https://github.com/Terradue/DotNet4One/blob/master/LICENSE.txt)
+
+### Questions, bugs, and suggestions
+
+Please file any bugs or questions as [issues](https://github.com/Terradue/DotNet4One/issues/new) 
+
+### Want to contribute?
+
+Fork the repository [here](https://github.com/Terradue/DotNet4One/fork) and send us pull requests.
 
