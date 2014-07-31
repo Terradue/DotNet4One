@@ -51,7 +51,7 @@ To clone it locally click the "Clone in Desktop" button above or run the
 following git commands.
 
 ```
-git clone git@github.com:Terradue/Terradue.DotNet4One.git Terradue.DotNet4One
+git clone git@github.com:Terradue/Terradue.OpenNebula.git Terradue.OpenNebula
 ```
 
 ## TODO

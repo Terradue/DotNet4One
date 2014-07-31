@@ -81,5 +81,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Terradue.OpenNebula.csproj" />
   </ItemGroup>
 </Project>

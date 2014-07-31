@@ -1,2 +1,6 @@
 
 *.userprefs
+
+/Terradue.OpenNebula/obj/
+/Terradue.OpenNebula/bin/
+/packages/
