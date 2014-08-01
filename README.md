@@ -69,11 +69,14 @@ Copyright (c) 2014 Terradue
 
 Licensed under the [GPL v3 License](https://github.com/Terradue/DotNet4One/blob/master/LICENSE)
 
-### Questions, bugs, and suggestions
+## Thanks
+
+This library is inspired from [OpenNebula-CSharp-Adapter](https://github.com/Neuralab/OpenNebula-CSharp-Adapter) and uses the excellent .NET framework [xml-rpc.net](http://xml-rpc.net).
+
+## Questions, bugs, and suggestions
 
 Please file any bugs or questions as [issues](https://github.com/Terradue/DotNet4One/issues/new) 
 
-### Want to contribute?
+## Want to contribute?
 
 Fork the repository [here](https://github.com/Terradue/DotNet4One/fork) and send us pull requests.
-
