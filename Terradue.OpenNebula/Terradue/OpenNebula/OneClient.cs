@@ -95,7 +95,10 @@ namespace Terradue.OpenNebula {
         /// </summary>
         /// <param name="username">Name of the target user.</param>
         public void StartDelegate(string username){
-            this.TargetUsername = username;
+            if(username != null)
+                this.TargetUsername = username;
+            else
+                this.TargetUsername = this.AdminUsername;
         }
 
         /// <summary>
