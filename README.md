@@ -2,7 +2,7 @@
 
 # DotNet4One - .Net Library to Access XML-RPC API of Opennebula 
 
-Terradue.DotNet4One is a library targeting .NET 4.0 and above providing an easy way to perform requests on any XML-RPC method exposed by an OpenNebula server.
+DotNet4One (Terradue.OpenNebula) is a library targeting .NET 4.0 and above providing an easy way to perform requests on any XML-RPC method exposed by an OpenNebula server.
 
 XML-RPC API documentation: http://docs.opennebula.org/4.6/integration/system_interfaces/api.html
 
@@ -33,10 +33,10 @@ one.EndDelegate();
 
 ## Getting Started
 
-Terradue.DotNet4One is available as NuGet package in releases.
+Terradue.OpenNebula is available as NuGet package in releases.
 
 ```
-Install-Package Terradue.DotNet4One
+Install-Package Terradue.OpenNebula
 ```
 
 ## Build
