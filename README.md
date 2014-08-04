@@ -41,7 +41,7 @@ Install-Package Terradue.OpenNebula
 
 ## Build
 
-Terradue.DotNet4One is a single assembly designed to be easily deployed anywhere. 
+Terradue.OpenNebula is a single assembly designed to be easily deployed anywhere. 
 
 To compile it yourself, you’ll need:
 
