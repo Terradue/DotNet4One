@@ -68,7 +68,7 @@ namespace Terradue.OpenNebula {
             int result = 0;
             XmlRpcTemplateManagement xrum = (XmlRpcTemplateManagement)GetProxy(typeof(XmlRpcTemplateManagement));
             Array openNebulaReturnArr = xrum.oneTemplateInstantiate(this.SessionSHA, id, vmName, onHold, extraTemplateAttributes);
-            if ((bool)openNebulaReturnArr.GetValue(1) == false) throw new Exception((string)openNebulaReturnArr.GetValue(1));
+            if ((bool)openNebulaReturnArr.GetValue(0) == false) throw new Exception((string)openNebulaReturnArr.GetValue(1));
             result = (int)openNebulaReturnArr.GetValue(1);
             return result;
         }
