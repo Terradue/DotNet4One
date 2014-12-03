@@ -33,7 +33,7 @@ one.EndDelegate();
 
 ## Getting Started
 
-Terradue.OpenNebula is available as NuGet package in releases.
+Terradue.OpenNebula is available as [NuGet package](https://www.nuget.org/packages/Terradue.OpenNebula) in releases
 
 ```
 Install-Package Terradue.OpenNebula
