@@ -48,9 +48,9 @@ using System.Collections.Generic;
 
     \xrefitem cptype_int "Interfaces" "Interfaces"
 
-    \xrefitem norm "Normative References" "Normative References" [OpenNebula XML-RPC reference guide](http://docs.opennebula.org/4.12/integration/system_interfaces/api.html).
+    \xrefitem api API API [OpenNebula XML-RPC reference guide](http://docs.opennebula.org/4.12/integration/system_interfaces/api.html).
 
-    @}
+@}
 
 */
 
