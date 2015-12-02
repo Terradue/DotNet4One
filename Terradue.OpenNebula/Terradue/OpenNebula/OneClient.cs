@@ -16,31 +16,6 @@ using System.Collections.Generic;
 
 /*!
 
-\addtogroup Cloud Cloud
-@{
-
-@}
-
-*/
-
-/*!
-
-\defgroup OneClient OneClient
-@{
-
-
-    DotNet4One Client makes XML-RPC requests to the interface exposed by an OpenNebula server.
-
-    \xrefitem int "Interfaces" "Interfaces" calls \ref OpenNebulaXMLRPC interface to perform action on Cloud Controller
-
-    \ingroup Cloud
-
-@}
-
-*/
-
-/*!
-
 \defgroup OpenNebulaXMLRPC OpenNebula XML-RPC Interface
 @{
     The XML-RPC interface is the primary interface for OpenNebula, and it exposes all the functionality to interface the OpenNebula daemon. 
