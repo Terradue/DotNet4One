@@ -10,7 +10,7 @@ XML-RPC API documentation: http://docs.opennebula.org/4.6/integration/system_int
 
 ```c#
 // First create the client
-string proxyUrl = "<YOUR_SERVER_URL>";
+string proxyUrl = "<YOUR_SERVER_URL>"; //XML-RPC url, e,g http://localhost:2633/RPC2
 string adminUser = "<YOUR_ADMIN_USERNAME>"; //should be user with driver server_* to allow requests delegation
 string adminPwd = "<YOUR_ADMIN_PASSWORD>"; //SHA1 password
 var one = new OneClient(proxyUrl,adminUser,adminPwd);

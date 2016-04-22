@@ -14,6 +14,21 @@ using System.Text;
 using System.IO;
 using System.Collections.Generic;
 
+/*!
+
+\defgroup OpenNebulaXMLRPC OpenNebula XML-RPC Interface
+@{
+    The XML-RPC interface is the primary interface for OpenNebula, and it exposes all the functionality to interface the OpenNebula daemon. 
+    Through the XML-RPC interface, it is possible to control and manage any OpenNebula resource, including virtual machines, networks, images, users, hosts and clusters.
+
+    \xrefitem cptype_int "Interfaces" "Interfaces"
+
+    \xrefitem api API API [OpenNebula XML-RPC reference guide](http://docs.opennebula.org/4.12/integration/system_interfaces/api.html).
+
+@}
+
+*/
+
 namespace Terradue.OpenNebula {
     /// <summary>
     /// DotNet4One Client calling XML-RPC requests exposed by an OpenNebula server.
@@ -95,10 +110,7 @@ namespace Terradue.OpenNebula {
         /// </summary>
         /// <param name="username">Name of the target user.</param>
         public void StartDelegate(string username){
-            if(username != null)
-                this.TargetUsername = username;
-            else
-                this.TargetUsername = this.AdminUsername;
+            this.TargetUsername = username;
         }
 
         /// <summary>
