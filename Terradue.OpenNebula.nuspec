@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>Terradue.OpenNebula</id>
-    <version>1.0.0-beta</version>
+    <version>1.0.1</version>
     <title>Terradue.OpenNebula</title>
     <authors>Terradue</authors>
     <projectUrl>https://github.com/Terradue/DotNet4One</projectUrl>
