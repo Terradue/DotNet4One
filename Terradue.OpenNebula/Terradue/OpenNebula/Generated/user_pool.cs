@@ -56,7 +56,7 @@ namespace Terradue.OpenNebula {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="")]
-    public partial class USER_POOLUSER {
+    public partial class USER_POOLUSER : IUSER {
         
         private string iDField;
         
@@ -857,7 +857,7 @@ namespace Terradue.OpenNebula {
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="")]
     
-    public partial class USER {
+    public partial class USER : IUSER {
         
         private string iDField8;
         
@@ -1033,6 +1033,18 @@ namespace Terradue.OpenNebula {
                 this.dEFAULT_USER_QUOTASField = value;
             }
         }
+    }
+
+    public interface IUSER {
+        string ID { get; set; }
+        string GID { get; set; }
+        string[] GROUPS { get; set; }
+        string GNAME { get; set; }
+        string NAME { get; set; }
+        string PASSWORD { get; set; }
+        string AUTH_DRIVER { get; set; }
+        string ENABLED { get; set; }
+        object TEMPLATE { get; set; }
     }
     
     /// <remarks/>
