@@ -1,7 +1,4 @@
-﻿using System.Reflection;
-using System.Runtime.CompilerServices;
-
-/*!
+﻿/*!
 
 \namespace Terradue.OpenNebula
 @{
@@ -20,6 +17,10 @@ using System.Runtime.CompilerServices;
 
 // Information about this assembly is defined by the following attributes.
 // Change them to the values specific to your project.
+
+using System.Reflection;
+using System.Runtime.CompilerServices;
+using NuGet4Mono.Extensions;
 
 [assembly: AssemblyTitle("Terradue.OpenNebula")]
 [assembly: AssemblyDescription("DotNet4One is a library targeting .NET 4.0 and above providing an easy way to perform requests on any XML-RPC method exposed by an OpenNebula server.")]
