@@ -134,7 +134,7 @@ namespace Terradue.OpenNebula {
                 using (System.IO.MemoryStream s = new System.IO.MemoryStream(System.Text.Encoding.UTF8.GetBytes(response ?? ""))) {
                     result = ser.Deserialize(s);
                 }
-            }catch(Exception e){
+            }catch(Exception){
                 throw new Exception(response);
             }
 
